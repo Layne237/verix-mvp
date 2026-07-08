@@ -8,7 +8,7 @@ export async function GET() {
       .from('proofs')
       .select(`
         user_id,
-        profiles(name, avatar_url),
+        profiles(display_name, avatar_url),
         verification_score
       `)
       .not('verification_score', 'is', null)
@@ -23,7 +23,7 @@ export async function GET() {
       const userId = entry.user_id
       if (!acc[userId]) {
         acc[userId] = {
-          name: entry.profiles?.name || null,
+          name: entry.profiles?.display_name || null,
           avatar: entry.profiles?.avatar_url || null,
           total: 0,
           score: 0,

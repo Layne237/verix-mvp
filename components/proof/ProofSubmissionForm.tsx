@@ -47,7 +47,7 @@ export function ProofSubmissionForm() {
       setIsLoading(true)
       const formData = new FormData()
       formData.append('title', data.title)
-      formData.append('category', data.category)
+      formData.append('action_type', data.action_type)
       formData.append('beforeImage', data.beforeImage)
       formData.append('afterImage', data.afterImage)
       if (data.description) formData.append('description', data.description)
@@ -94,10 +94,10 @@ export function ProofSubmissionForm() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="category">Category</Label>
-            <Select onValueChange={(value) => setValue('category', value as any)}>
+            <Label htmlFor="action_type">Action Type</Label>
+            <Select onValueChange={(value) => setValue('action_type', value as any)}>
               <SelectTrigger>
-                <SelectValue placeholder="Select a category" />
+                <SelectValue placeholder="Select an action type" />
               </SelectTrigger>
               <SelectContent>
                 {IMPACT_CATEGORIES.map((cat) => (

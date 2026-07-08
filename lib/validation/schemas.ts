@@ -14,7 +14,7 @@ export const signInSchema = z.object({
 export const proofSubmissionSchema = z.object({
   title: z.string().min(5, 'Title must be at least 5 characters').max(100),
   description: z.string().max(500).optional(),
-  category: z.enum([
+  action_type: z.enum([
     'tree_planting',
     'beach_cleanup',
     'community_garden',

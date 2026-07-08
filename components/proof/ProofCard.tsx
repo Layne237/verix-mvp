@@ -48,7 +48,7 @@ export function ProofCard({ proof }: ProofCardProps) {
         </CardHeader>
         <CardContent>
           <p className="mb-2 text-xs text-muted-foreground">
-            {formatCategory(proof.category)} &middot;{' '}
+            {formatCategory(proof.action_type)} &middot;{' '}
             {formatRelativeTime(proof.created_at)}
           </p>
           {proof.description && (

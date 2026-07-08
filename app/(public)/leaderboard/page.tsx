@@ -12,7 +12,7 @@ export default async function LeaderboardPage() {
   const entries = (profiles || []).map((profile, index) => ({
     rank: index + 1,
     user: {
-      name: profile.name,
+      name: profile.display_name,
       avatar_url: profile.avatar_url,
     },
     totalProofs: 0,

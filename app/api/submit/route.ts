@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
 
     const formData = await req.formData()
     const title = formData.get('title') as string
-    const category = formData.get('category') as string
+    const actionType = formData.get('action_type') as string
     const beforeFile = formData.get('beforeImage') as File
     const afterFile = formData.get('afterImage') as File
     const description = formData.get('description') as string | null
@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
         user_id: session.user.id,
         title,
         description,
-        category,
+        action_type: actionType,
         before_image_url: compressedBefore,
         after_image_url: compressedAfter,
         latitude: latitude ? parseFloat(latitude) : null,

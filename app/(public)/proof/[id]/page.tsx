@@ -45,7 +45,7 @@ export default async function ProofPage({ params }: ProofPageProps) {
           <div>
             <h1 className="text-3xl font-bold">{proof.title}</h1>
             <p className="mt-2 text-muted-foreground">
-              {formatCategory(proof.category)} &middot;{' '}
+              {formatCategory(proof.action_type)} &middot;{' '}
               {formatDate(proof.created_at)}
             </p>
           </div>
