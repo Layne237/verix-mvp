@@ -50,6 +50,10 @@
   --color-on-background: #191c1c;
   --color-surface-variant: #e1e3e2;
 
+  /* Gold verification tier — used for top-tier/elite proof badges (landing hero, public proof page, leaderboard) */
+  --color-gold: #ffd700;
+  --color-on-gold: #b8860b;
+
   /* Border radius — consistent across all 8 Stitch screens (xl = 12px) */
   --radius: 0.25rem;
   --radius-lg: 0.5rem;
