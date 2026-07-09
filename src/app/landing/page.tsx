@@ -245,7 +245,7 @@ function FinalCta() {
 export default function LandingPage() {
   return (
     <>
-      <Header />
+      <Header position="fixed" />
       <main className="pt-16">
         <Hero />
         <HowItWorks />

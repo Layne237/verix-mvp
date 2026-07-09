@@ -8,6 +8,8 @@ type ButtonProps = {
   variant?: ButtonVariant
   size?: ButtonSize
   to?: string
+  type?: 'button' | 'submit'
+  disabled?: boolean
   onClick?: () => void
   className?: string
   children: ReactNode
@@ -27,8 +29,17 @@ const variantClasses: Record<ButtonVariant, string> = {
   onPrimaryOutline: 'border border-on-primary/30 text-on-primary hover:bg-white/10',
 }
 
-export default function Button({ variant = 'primary', size = 'md', to, onClick, className = '', children }: ButtonProps) {
-  const classes = `rounded-xl font-label-md text-label-md transition-all active:scale-95 inline-flex items-center justify-center gap-2 ${sizeClasses[size]} ${variantClasses[variant]} ${className}`
+export default function Button({
+  variant = 'primary',
+  size = 'md',
+  to,
+  type = 'button',
+  disabled,
+  onClick,
+  className = '',
+  children,
+}: ButtonProps) {
+  const classes = `rounded-xl font-label-md text-label-md transition-all active:scale-95 inline-flex items-center justify-center gap-2 disabled:opacity-80 disabled:cursor-not-allowed ${sizeClasses[size]} ${variantClasses[variant]} ${className}`
 
   if (to) {
     return (
@@ -39,7 +50,7 @@ export default function Button({ variant = 'primary', size = 'md', to, onClick, 
   }
 
   return (
-    <button type="button" onClick={onClick} className={classes}>
+    <button type={type} disabled={disabled} onClick={onClick} className={classes}>
       {children}
     </button>
   )

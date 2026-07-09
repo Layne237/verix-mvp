@@ -7,9 +7,14 @@ const PLACEHOLDER_AVATAR =
 
 type HeaderProps = {
   avatarUrl?: string
+  showNav?: boolean
+  // 'fixed' overlays page content (landing hero, public proof page) and needs the
+  // caller to add matching top padding. 'sticky' occupies normal layout flow — the
+  // safe default for app-shell pages (dashboard, submit-proof, etc).
+  position?: 'fixed' | 'sticky'
 }
 
-export default function Header({ avatarUrl = PLACEHOLDER_AVATAR }: HeaderProps) {
+export default function Header({ avatarUrl = PLACEHOLDER_AVATAR, showNav = true, position = 'sticky' }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -18,22 +23,25 @@ export default function Header({ avatarUrl = PLACEHOLDER_AVATAR }: HeaderProps) 
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const positionClasses =
+    position === 'fixed' ? 'fixed top-0 bg-surface/80 backdrop-blur-md' : 'sticky top-0 bg-surface'
+
   return (
-    <header
-      className={`fixed top-0 z-50 w-full bg-surface/80 backdrop-blur-md border-b border-outline-variant transition-shadow ${scrolled ? 'shadow-md' : ''}`}
-    >
+    <header className={`${positionClasses} z-50 w-full border-b border-outline-variant transition-shadow ${scrolled ? 'shadow-md' : ''}`}>
       <div className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-16">
         <Link to="/" className="flex items-center gap-2">
           <MaterialIcon name="verified" filled className="text-primary" />
           <span className="text-headline-md font-headline-md font-bold text-primary">Verix</span>
         </Link>
         <div className="flex items-center gap-4">
-          <Link
-            to="/leaderboard"
-            className="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors hidden md:block"
-          >
-            Leaderboard
-          </Link>
+          {showNav && (
+            <Link
+              to="/leaderboard"
+              className="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors hidden md:block"
+            >
+              Leaderboard
+            </Link>
+          )}
           <div className="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center overflow-hidden">
             <img className="w-full h-full object-cover" alt="Signed-in user avatar" src={avatarUrl} />
           </div>
