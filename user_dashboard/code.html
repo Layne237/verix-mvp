@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verix User Dashboard - My Impact Portfolio</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Design System Tokens -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#e6e9e8",
+                    "inverse-primary": "#70dc91",
+                    "primary-fixed-dim": "#70dc91",
+                    "on-tertiary-fixed-variant": "#34495e",
+                    "primary-fixed": "#8cf9ab",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#191c1c",
+                    "on-background": "#191c1c",
+                    "surface-variant": "#e1e3e2",
+                    "outline-variant": "#bdcabc",
+                    "primary-container": "#008646",
+                    "surface-dim": "#d8dad9",
+                    "surface": "#f8faf9",
+                    "on-primary-container": "#f6fff4",
+                    "tertiary-fixed-dim": "#b3c9e3",
+                    "primary": "#006a36",
+                    "tertiary-container": "#62778e",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2e3131",
+                    "background": "#f8faf9",
+                    "on-surface-variant": "#3e4a3f",
+                    "inverse-on-surface": "#eff1f0",
+                    "secondary-fixed-dim": "#9acbff",
+                    "surface-container": "#eceeed",
+                    "on-primary-fixed-variant": "#005228",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#f2f4f3",
+                    "on-secondary-fixed-variant": "#004a78",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#00210d",
+                    "tertiary": "#495e74",
+                    "surface-container-highest": "#e1e3e2",
+                    "on-tertiary-fixed": "#051d30",
+                    "secondary-container": "#7cbeff",
+                    "outline": "#6e7a6e",
+                    "secondary-fixed": "#cfe5ff",
+                    "on-secondary-fixed": "#001d34",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f8faf9",
+                    "surface-tint": "#006d37",
+                    "on-tertiary-container": "#fdfcff",
+                    "tertiary-fixed": "#cfe5ff",
+                    "on-secondary-container": "#004c7c",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#02629e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-desktop": "40px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .proof-card-shadow {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 z-50 border-b border-outline-variant w-full">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="verified">verified</span>
+<span class="text-headline-md font-headline-md font-bold text-primary">Verix</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A high-quality professional portrait of a user with a clean, minimalist background. The person has a friendly expression and is looking directly at the camera. The lighting is bright and even, reflecting a corporate modern aesthetic with soft shadows and a professional, trustworthy atmosphere for an institutional transparency platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvXMwPMmPM0pHjZuNI-kVWNjyplSQM42o0Ci6hGE2w4A3SQGYE6A9RrtTFalI6eVneDQnrZzd8AATYbmKgZ2zAHTSXqRtw4LPdfxx79XBrsmNzD4sR50S10vT0Ywo_O_hkT-WOH-k-VygWCUAuur0YAls49pfoSmNgW6PqQ2TKU1V11fbtKLNNUZyNQV9C4GflPPkxy3dZlXAiLp5NmKQO59lDBTvxMcgJOMezFP6mF_L1CxhWanI03e6WBK2evEbMMqtr0ffgKP5g"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-8">
+<!-- Dashboard Header -->
+<div class="mb-8">
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-on-surface">My Impact Portfolio</h1>
+<p class="text-body-md text-on-surface-variant mt-2">Verified tracking of your civic and environmental contributions.</p>
+</div>
+<!-- Stats Row -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="bg-surface-container-low p-5 rounded-xl border border-outline-variant flex flex-col items-center text-center">
+<span class="text-label-sm text-on-surface-variant mb-1">Total Verified</span>
+<span class="text-display-lg font-display-lg text-primary leading-none">12</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl border border-outline-variant flex flex-col items-center text-center">
+<span class="text-label-sm text-on-surface-variant mb-1">Avg. Confidence</span>
+<span class="text-display-lg font-display-lg text-secondary leading-none">88%</span>
+</div>
+</div>
+<!-- Section Title -->
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-headline-md font-headline-md text-on-surface">Submissions</h2>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-xl text-label-md flex items-center gap-2 transition-all active:opacity-80">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                Submit Proof
+            </button>
+</div>
+<!-- Proof List (Vertical Cards) -->
+<div class="space-y-4" id="proof-container">
+<!-- Card 1: Verified -->
+<div class="bg-white rounded-xl border border-outline-variant proof-card-shadow overflow-hidden group">
+<div class="p-4 flex gap-4">
+<div class="w-20 h-20 rounded-lg bg-surface-container-high overflow-hidden flex-shrink-0 border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A clean, wide-angle photograph of a community garden with lush green plants and organized wooden planters. The sunlight is warm and bright, emphasizing a positive environmental impact. The image is crisp and professional, fitting for an impact verification report with high credibility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Pk4bMYQ1zBrrk-IxyB0xOQmqkkcbkSQc9WH_Mf8R9JsD3gFy0yjcVnaWUYLFrmfHohqt8xkkCNAO512MnyEMS7SGKOap7aSX7fO_YivhcnVhqw4iSyJyD8uLl35F8VRIpVp_6h35KgNAhyQC405osFagTKPuXlIgaupA_tDOu61LU06QH_mpCBrtvsgL2F1hLDe8Evm6tD1PGIHXZAbJlYnF3cSWU8r23nX2VEk3msfb7Q1kbGea9sfZrOrx1Y-IVnBw3neHh_da"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<h3 class="text-label-md font-label-md text-on-surface line-clamp-1">Central Park River Cleanup</h3>
+<div class="flex flex-wrap gap-2 mt-2">
+<!-- Status Pill: Verified -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider border bg-primary/10 text-primary border-primary/20">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    Verified
+                                </span>
+<!-- Confidence Chip -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-surface-container text-on-surface-variant border border-outline-variant">
+                                    96% Confidence
+                                </span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3">
+<span class="text-label-sm text-on-surface-variant">2 days ago</span>
+<div class="flex gap-2">
+<button class="text-secondary text-label-sm font-bold flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[16px]" data-icon="visibility">visibility</span>
+                                    View Page
+                                </button>
+<button class="text-error text-label-sm font-bold flex items-center gap-1 hover:underline" onclick="this.closest('.bg-white').remove()">
+<span class="material-symbols-outlined text-[16px]" data-icon="delete">delete</span>
+                                    Delete
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Pending -->
+<div class="bg-white rounded-xl border border-outline-variant proof-card-shadow overflow-hidden group">
+<div class="p-4 flex gap-4">
+<div class="w-20 h-20 rounded-lg bg-surface-container-high overflow-hidden flex-shrink-0 border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A close-up photograph of new saplings planted in a row along a hillside. The soil is dark and moist, and the background is a soft-focus forest landscape. The lighting is diffused and natural, conveying a sense of institutional transparency and ecological progress." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0LlLj7_Dlt2iiTFVd8qA9SHQTY56O_rQz0aq09WJNmFQpRU-607C-dQXbMrCUs3WijEV8EcKbSelhamhLgJFoTrh8_in7Ji111GO6EK2gMflMKK6Zxtvhxf9PiPFM_8WMrDIe9cq3fZawOJ3hlCm4poOB982J5ByzOysivHtNESE6oZ_TatgnoMYmMtCxP9TvGi8yutasiRoxXOefUmvwWY0FGnydoptlVnlFBjSCEL37MWsZnvcTRJCLOTNv5HkT586pRLajNyWz"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<h3 class="text-label-md font-label-md text-on-surface line-clamp-1">Urban Reforestation Project</h3>
+<div class="flex flex-wrap gap-2 mt-2">
+<!-- Status Pill: Pending -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider border bg-secondary/10 text-secondary border-secondary/20">
+<span class="material-symbols-outlined text-[12px]" data-icon="schedule" style="font-variation-settings: 'FILL' 1;">schedule</span>
+                                    Pending
+                                </span>
+<!-- Confidence Chip -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-surface-container text-on-surface-variant border border-outline-variant">
+                                    72% Confidence
+                                </span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3">
+<span class="text-label-sm text-on-surface-variant">5 days ago</span>
+<div class="flex gap-2">
+<button class="text-secondary text-label-sm font-bold flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[16px]" data-icon="visibility">visibility</span>
+                                    View Page
+                                </button>
+<button class="text-error text-label-sm font-bold flex items-center gap-1 hover:underline" onclick="this.closest('.bg-white').remove()">
+<span class="material-symbols-outlined text-[16px]" data-icon="delete">delete</span>
+                                    Delete
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Flagged -->
+<div class="bg-white rounded-xl border border-outline-variant proof-card-shadow overflow-hidden group">
+<div class="p-4 flex gap-4">
+<div class="w-20 h-20 rounded-lg bg-surface-container-high overflow-hidden flex-shrink-0 border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A gritty, urban scene showing a stack of recycled cardboard boxes in a dimly lit alleyway. The image quality is intentionally lower to represent a flagged or questionable submission. The mood is somber and stark, reflecting a verification challenge in a corporate dashboard context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8OEwJCC1bilxbx1fzxV9b4vKPUL856WpAZJtypLQVTtr1ZYeMj_jm7kGX0Can-ypZY6-mAKEPtgzdIgdCKaDz-lrnopckyByc9reyIrP00B15_-IdmtUK6IoZLcV743o2TN_E3f6kqBuCBIxP8-CLUs_S047z8ovzgkapmpg3uOTkX8xv1qK28CyuYKq-3CcyBOYMgalvdDowPPrpwBR33pEim1nZU0KT2h5qsAULR0rQvWlyf9LZFK-bPHIikfFqYtBa6q2lRGRY"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<h3 class="text-label-md font-label-md text-on-surface line-clamp-1">Downtown Recycling Drive</h3>
+<div class="flex flex-wrap gap-2 mt-2">
+<!-- Status Pill: Flagged -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider border bg-error/10 text-error border-error/20">
+<span class="material-symbols-outlined text-[12px]" data-icon="error" style="font-variation-settings: 'FILL' 1;">error</span>
+                                    Flagged
+                                </span>
+<!-- Confidence Chip -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-surface-container text-on-surface-variant border border-outline-variant">
+                                    41% Confidence
+                                </span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3">
+<span class="text-label-sm text-on-surface-variant">1 week ago</span>
+<div class="flex gap-2">
+<button class="text-secondary text-label-sm font-bold flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[16px]" data-icon="visibility">visibility</span>
+                                    View Page
+                                </button>
+<button class="text-error text-label-sm font-bold flex items-center gap-1 hover:underline" onclick="this.closest('.bg-white').remove()">
+<span class="material-symbols-outlined text-[16px]" data-icon="delete">delete</span>
+                                    Delete
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden by default, shown via JS if all cards deleted) -->
+<div class="hidden py-16 flex flex-col items-center justify-center text-center px-4" id="empty-state">
+<div class="w-20 h-20 bg-surface-container rounded-full flex items-center justify-center mb-6 border border-outline-variant">
+<span class="material-symbols-outlined text-outline text-4xl" data-icon="upload_file">upload_file</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-2">No impact proof yet?</h3>
+<p class="text-body-md text-on-surface-variant mb-8 max-w-sm mx-auto">Start by submitting your first cleanup or action to build your verified portfolio!</p>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-xl text-label-md font-bold transition-all active:scale-95">
+                Submit Your First Proof
+            </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant w-full mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter py-8 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div>
+<p class="text-headline-sm font-headline-sm font-bold text-primary mb-2">Verix</p>
+<p class="text-body-md text-on-tertiary-fixed-variant max-w-sm">
+                    Dedicated to institutional transparency and civic duty.
+                </p>
+</div>
+<div class="flex flex-col md:items-end justify-between gap-4">
+<div class="flex gap-6">
+<a class="text-label-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">About</a>
+<a class="text-label-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">Submit</a>
+<a class="text-label-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">Leaderboard</a>
+</div>
+<p class="text-label-sm text-on-tertiary-fixed-variant">
+                    © 2024 Verix.
+                </p>
+</div>
+</div>
+</footer>
+<!-- FAB (Mobile Primary Action) -->
+<button class="fixed bottom-6 right-6 w-14 h-14 bg-primary text-on-primary rounded-xl shadow-lg flex items-center justify-center transition-transform active:scale-90 md:hidden z-40">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</button>
+<script>
+        // Simple observer for empty state
+        const container = document.getElementById('proof-container');
+        const emptyState = document.getElementById('empty-state');
+        
+        const checkEmpty = () => {
+            if (container.children.length === 0) {
+                container.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+            }
+        };
+
+        // Mutation observer to watch for removals
+        const observer = new MutationObserver(checkEmpty);
+        observer.observe(container, { childList: true });
+
+        // Logic for active navigation item based on context (Shared Component Logic)
+        // Since we are in the Dashboard/Impact Portfolio, we ensure the TopAppBar state 
+        // reflects "Portfolio" or similar if we had a nav list in the JSON.
+    </script>
+</body></html>

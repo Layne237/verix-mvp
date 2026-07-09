@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verix | Public Proof Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#e6e9e8",
+                    "inverse-primary": "#70dc91",
+                    "primary-fixed-dim": "#70dc91",
+                    "on-tertiary-fixed-variant": "#34495e",
+                    "primary-fixed": "#8cf9ab",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#191c1c",
+                    "on-background": "#191c1c",
+                    "surface-variant": "#e1e3e2",
+                    "outline-variant": "#bdcabc",
+                    "primary-container": "#008646",
+                    "surface-dim": "#d8dad9",
+                    "surface": "#f8faf9",
+                    "on-primary-container": "#f6fff4",
+                    "tertiary-fixed-dim": "#b3c9e3",
+                    "primary": "#006a36",
+                    "tertiary-container": "#62778e",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2e3131",
+                    "background": "#f8faf9",
+                    "on-surface-variant": "#3e4a3f",
+                    "inverse-on-surface": "#eff1f0",
+                    "secondary-fixed-dim": "#9acbff",
+                    "surface-container": "#eceeed",
+                    "on-primary-fixed-variant": "#005228",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#f2f4f3",
+                    "on-secondary-fixed-variant": "#004a78",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#00210d",
+                    "tertiary": "#495e74",
+                    "surface-container-highest": "#e1e3e2",
+                    "on-tertiary-fixed": "#051d30",
+                    "secondary-container": "#7cbeff",
+                    "outline": "#6e7a6e",
+                    "secondary-fixed": "#cfe5ff",
+                    "on-secondary-fixed": "#001d34",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f8faf9",
+                    "surface-tint": "#006d37",
+                    "on-tertiary-container": "#fdfcff",
+                    "tertiary-fixed": "#cfe5ff",
+                    "on-secondary-container": "#004c7c",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#02629e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-desktop": "40px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .proof-canvas {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: #f8faf9;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-low text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-margin-mobile py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-headline-md font-bold text-primary">Verix</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high flex items-center justify-center border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional, close-up portrait of a user for a profile avatar. The person has a friendly, neutral expression. The background is a soft, blurred office environment with cool tones, maintaining a corporate and modern aesthetic in line with a high-end AI verification platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-Z3ey2swEPqueKSTNHZ8ASFEqJhX4DghOr47IKSVpPd0NzcJbE6OyiDRB_vJ3RIr7CGHMyaPcUNWbMJBsL5p6HZWEITRAVAegIJhGbDWDvnco4AJEBhCR9hOVv9zrEBzsh1Tqz4hxNHgEDgZg26GSzIkc4Gt6GsOzoG47sm1gsetc-DoYwMbrhsOBQRUl5iFsFevKlmPIj8MyuV1NyXuw4KesvVdNU_g4yzS66jKgmsLglSNArFvYKH4Us7nLn66BHnNjJVB9tkd6"/>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-24 proof-canvas min-h-screen px-margin-mobile flex flex-col gap-6">
+<!-- Proof Title & Header Info -->
+<section class="flex flex-col gap-2">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface tracking-tight">City Park Cleanup</h1>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+<span class="text-label-md font-label-md">Paris, France</span>
+</div>
+<span class="text-outline">•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+<span class="text-label-md font-label-md">Oct 24, 2024</span>
+</div>
+</div>
+</section>
+<!-- Verification Badge Section -->
+<section class="flex flex-col items-center justify-center p-6 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm">
+<div class="flex flex-col items-center gap-2">
+<!-- Large prominent Gold Verification Badge -->
+<div class="flex items-center gap-2 px-4 py-2 bg-[#FFD700] bg-opacity-10 border border-[#FFD700] rounded-full">
+<span class="material-symbols-outlined text-[#B8860B]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[#B8860B] font-bold text-label-md">GOLD VERIFIED</span>
+</div>
+<div class="text-center mt-2">
+<span class="text-display-lg font-display-lg text-primary leading-none">94%</span>
+<p class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest mt-1">Confidence Score</p>
+</div>
+</div>
+</section>
+<!-- Main Visual: Before/After Photos -->
+<section class="flex flex-col gap-4">
+<div class="relative rounded-xl overflow-hidden border border-outline-variant bg-surface-container">
+<div class="absolute top-4 left-4 z-10 px-3 py-1 bg-surface/90 backdrop-blur-md rounded-full border border-outline-variant">
+<span class="text-label-sm font-label-sm text-on-surface uppercase tracking-wider">Before</span>
+</div>
+<div class="h-64 w-full">
+<img class="w-full h-full object-cover" data-alt="A realistic high-resolution photo of a city park area in Paris. The ground is visibly cluttered with plastic bottles, discarded wrappers, and assorted urban litter scattered across a patch of green grass near a park bench. The lighting is natural daylight, showing a clear state of neglect before a cleanup effort." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrayRQCzhAUFPYrCwejACOKnVQfk04MuTxbNYOrXI2V0cspyDImc_gYhPt45Mkv3oWZbbosLLRSErQQ_pFb4xVBV69_8RDdC8yW8At7qdksHxfbeREmLv2h7lXBkfpcFkccQZlLOLDRyF83Fk56yDunE468BpGlqHLn5Wx0GNO8lDN6VCggSJG0g8wMkMHJGkM8yT5TUcOEP2ketd-htkFjCrGZplXkS5bbT81BTHujs2IdxBLSi1vkcKS87bj61Vn7ujbaYYds9mc"/>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden border border-primary/20 bg-surface-container">
+<div class="absolute top-4 left-4 z-10 px-3 py-1 bg-primary text-on-primary rounded-full shadow-lg">
+<span class="text-label-sm font-label-sm uppercase tracking-wider">After</span>
+</div>
+<div class="h-64 w-full">
+<img class="w-full h-full object-cover" data-alt="The exact same city park location in Paris from the previous image, but now completely pristine and clean. The grass is vibrant green, the park bench is clear, and all plastic debris and litter have been removed. The lighting remains consistent with the 'before' photo to demonstrate authentic impact." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl4WnuknZecRuoDJG4CQ53vKldJy7qD6xbHzk7h7TeqFDzk7gLQ8AnJELS_d0Uopb1WKWvH5m-R1XIfZ3BSmbTZTaDLrPuaY0HP6GNwAfO9AACZOPXPNy4Rw_Hbly1I0w4Q3-GHn0uDJIzCOGdci5Obqm-qQNtOv6oaisJ6xyyw47E_yHHkcVV7Uu0SD6pSbCfZrHUrJiUdl45deFEO9uOuWKCidlq84QlfhcNAd0zcmNkPKaA38TVDarWDSDG85pCOGqCztpn3Jgs"/>
+</div>
+</div>
+</section>
+<!-- AI Reasoning Card -->
+<section class="p-6 bg-surface-container border border-outline-variant rounded-xl flex flex-col gap-3">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<h3 class="text-label-md font-bold uppercase tracking-wider">AI Analysis</h3>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+                AI Analysis confirms significant waste removal from the park area. The before image shows plastic debris which is absent in the after image, showing high environmental impact. Verification logic processed multi-angle spatial consistency to rule out digital alteration.
+            </p>
+</section>
+<!-- Submitter Info -->
+<section class="flex items-center justify-between p-4 bg-surface-container-low border border-outline-variant rounded-xl">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A close-up profile picture of a young man named John Doe, wearing a simple organic cotton t-shirt. He looks directly at the camera with a confident, civic-minded expression. The lighting is warm and natural, suggesting an outdoor or brightly lit indoor setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1vtEZ5sKaLgnfyhpksOqXj_w1sPTK1vwnhytbOtB5vggs4ai-A-5foKsRjH1mzMoAJGo7bnn0YK8-ef_xQ_8mgMl0pC_ZkoPoQTawLPf8sxYZh-jbrcoaAa7T5eRJil4cdfOWyqN-sB2HfsFtQ3c96Vnm68PjmYKMnbObNpBw3QTEdmeeBisicsXk-odRpITAYMxd8j0MUob2OzPiUqRkXQiBTtuGARqQAzW1yJrz6Miw6sE-UkRUs6onq3B3cozbVVOG_f-TBoeW"/>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Verified for</span>
+<span class="text-body-md font-bold text-on-surface">John Doe</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+</section>
+<!-- Share Section -->
+<section class="flex flex-col gap-4 py-4">
+<h3 class="text-label-md font-bold text-on-surface-variant px-1">Share this proof</h3>
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-surface border border-outline-variant rounded-xl hover:bg-surface-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[#1DA1F2]" data-icon="share">share</span>
+<span class="text-label-sm font-label-sm">Twitter</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-surface border border-outline-variant rounded-xl hover:bg-surface-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[#25D366]" data-icon="chat">chat</span>
+<span class="text-label-sm font-label-sm">WhatsApp</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-surface border border-outline-variant rounded-xl hover:bg-surface-container transition-colors active:scale-95" id="copy-btn">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="content_copy">content_copy</span>
+<span class="text-label-sm font-label-sm">Copy Link</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant">
+<div class="py-8 px-margin-mobile flex flex-col gap-6 items-center text-center">
+<div class="flex items-center gap-2">
+<span class="text-headline-sm font-bold text-primary">Verix</span>
+</div>
+<p class="text-body-md font-body-md text-on-tertiary-fixed-variant max-w-xs">
+                © 2024 Verix. Dedicated to institutional transparency and civic duty.
+            </p>
+<div class="flex gap-6">
+<a class="text-label-md font-label-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">About</a>
+<a class="text-label-md font-label-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">Submit</a>
+<a class="text-label-md font-label-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">Leaderboard</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for the copy button
+        const copyBtn = document.getElementById('copy-btn');
+        copyBtn.addEventListener('click', () => {
+            const icon = copyBtn.querySelector('.material-symbols-outlined');
+            const text = copyBtn.querySelector('.text-label-sm');
+            const originalIcon = icon.innerText;
+            const originalText = text.innerText;
+
+            icon.innerText = 'check';
+            text.innerText = 'Copied!';
+            copyBtn.classList.add('bg-primary-container', 'text-on-primary-container');
+
+            setTimeout(() => {
+                icon.innerText = originalIcon;
+                text.innerText = originalText;
+                copyBtn.classList.remove('bg-primary-container', 'text-on-primary-container');
+            }, 2000);
+        });
+    </script>
+</body></html>

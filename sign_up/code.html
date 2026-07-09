@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verix | Create Your Account</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom subtle glass effect for the registration card */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-surface": "#2e3131",
+                      "error": "#ba1a1a",
+                      "primary-fixed": "#8cf9ab",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed": "#00210d",
+                      "on-tertiary-fixed": "#051d30",
+                      "tertiary-fixed": "#cfe5ff",
+                      "outline-variant": "#bdcabc",
+                      "secondary-fixed-dim": "#9acbff",
+                      "on-surface": "#191c1c",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#006d37",
+                      "tertiary-fixed-dim": "#b3c9e3",
+                      "surface-bright": "#f8faf9",
+                      "tertiary-container": "#62778e",
+                      "tertiary": "#495e74",
+                      "primary-fixed-dim": "#70dc91",
+                      "on-secondary-fixed-variant": "#004a78",
+                      "surface-dim": "#d8dad9",
+                      "surface-variant": "#e1e3e2",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed": "#001d34",
+                      "inverse-on-surface": "#eff1f0",
+                      "on-background": "#191c1c",
+                      "surface": "#f8faf9",
+                      "primary-container": "#008646",
+                      "primary": "#006a36",
+                      "on-secondary-container": "#004c7c",
+                      "on-primary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#cfe5ff",
+                      "on-primary-fixed-variant": "#005228",
+                      "on-primary-container": "#f6fff4",
+                      "on-error": "#ffffff",
+                      "secondary": "#02629e",
+                      "surface-container": "#eceeed",
+                      "secondary-container": "#7cbeff",
+                      "background": "#f8faf9",
+                      "outline": "#6e7a6e",
+                      "on-tertiary-fixed-variant": "#34495e",
+                      "on-surface-variant": "#3e4a3f",
+                      "surface-container-low": "#f2f4f3",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-container": "#fdfcff",
+                      "surface-container-highest": "#e1e3e2",
+                      "surface-container-high": "#e6e9e8",
+                      "inverse-primary": "#70dc91"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "container-max": "1280px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "40px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="verified">verified</span>
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary">Verix</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex items-center gap-6">
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors" href="#">Mission</a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors" href="#">Governance</a>
+</nav>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="person">person</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center py-12 px-margin-mobile relative overflow-hidden">
+<!-- Background Atmospheric Element -->
+<div class="absolute inset-0 pointer-events-none opacity-20 overflow-hidden">
+<div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-primary blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] rounded-full bg-secondary-container blur-[100px]"></div>
+</div>
+<div class="w-full max-w-[1100px] grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center z-10">
+<!-- Left Side: Content & Branding -->
+<div class="hidden lg:flex flex-col space-y-8 pr-12">
+<div class="space-y-4">
+<h1 class="text-display-lg font-display-lg text-primary tracking-tight">Institutional <br/>Transparency.</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-md">
+                        Verix is an AI-powered platform dedicated to impact verification, balancing high-tech precision with the grounded reliability of civic duty.
+                    </p>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="flex items-start gap-4 p-4 rounded-xl border border-outline-variant bg-surface-container-low transition-all hover:bg-surface-container">
+<span class="material-symbols-outlined text-primary mt-1" data-icon="shield_check">shield_lock</span>
+<div>
+<h3 class="font-bold text-on-surface">Verified Identity</h3>
+<p class="text-label-md font-label-md text-on-surface-variant">Secure, blockchain-backed credentials for every contributor.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl border border-outline-variant bg-surface-container-low transition-all hover:bg-surface-container">
+<span class="material-symbols-outlined text-secondary mt-1" data-icon="query_stats">query_stats</span>
+<div>
+<h3 class="font-bold text-on-surface">Impact Metrics</h3>
+<p class="text-label-md font-label-md text-on-surface-variant">Real-time verification of environmental and social milestones.</p>
+</div>
+</div>
+</div>
+<div class="pt-4">
+<div class="flex -space-x-3 overflow-hidden">
+<img class="inline-block h-10 w-10 rounded-full ring-2 ring-background object-cover" data-alt="A professional headshot of a diverse female impact scientist in a clean, modern studio setting with soft grey background and focused lighting, wearing smart casual attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgtEW5RVbBBCpaKQUMGB6LCE5wj9hNjv93nb14z--nmQvQY6BZbQLg4iKLZn9axPDOchvMfCHkiAfTgnjIFKcG6zu4f_oNjxi3zhkV1-hr1uJ2pUdRiq9WBJeYVFd7k14TIo8CYQa7F2mxkvvFUUtIEthkZMGnB89JH0W0-QNy_uLi6QB0LyfJ_ToCb0SAC6t7afa_Le09FSzcmWS8iuuiUjx3ig8mH-wH0Jv7doy0dYUluqNDHEquFBOblYaeC8LlvZqwRSf3ehH0"/>
+<img class="inline-block h-10 w-10 rounded-full ring-2 ring-background object-cover" data-alt="A professional headshot of a middle-aged male government official in a corporate environment, featuring high-contrast lighting and a clean, minimalist blue and white color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZNMO8hPeLG4RtkS0gMAZKv4DCePWj_DXiihOks72hOI9FOwfeJdvAKFUps-KNoFzzHVnAWsXiaZay27mXI2ZJ6ozgdl35JyvVZl-1JuU0KgK_ae4VoaNwQyJy4siMsbOl6gvNJgzBwzl_eVs4ojiL7qRqTewEFTlodPpuqqR72gFWVwsgejkWKdk8ghL6_Z-3id8lYu6j8VwW2fb7ysqdiOjCjj29Hkm0nKfFzYWfImhMjdRTUPzHBEIroPs-FOb67JnvsiKTXa0X"/>
+<img class="inline-block h-10 w-10 rounded-full ring-2 ring-background object-cover" data-alt="A professional headshot of a young environmental engineer looking confidently at the camera, set against a blurred high-tech lab background with emerald green accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIoDgt1bcyEPcavYtKVPXo_SqHBfg8jOl8OQuqisfHnpYQfyifNPskKSgDqg258k3EDAPb5r5KC9Y1h1GdtKk8C6hfjyRY9yoqhQtY1T5YZwNbKv9G6puVRvbi5B8703X3X_siZTH_Bl5842vPDyWpPuviTjwpiLdSfHhjlsdFL1StOeTew4HB4e7mEf7fiipmKOntQ-tZrBMfgkEUCgz4Qe3h0p6BgaE0aODu5T1gCGSqNnTYeHDLJtAQJ3zQ6RAO6YhploRKnq8C"/>
+</div>
+<p class="mt-3 text-label-sm font-label-sm text-on-surface-variant">Trusted by 2,000+ Institutional Verifiers worldwide.</p>
+</div>
+</div>
+<!-- Right Side: Registration Card -->
+<div class="w-full flex flex-col">
+<div class="bg-surface glass-panel border border-outline-variant rounded-xl p-8 md:p-10 shadow-sm transition-shadow hover:shadow-md">
+<div class="text-center md:text-left mb-8">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-2">Create your account</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Join our community of impact verifiers</p>
+</div>
+<!-- Social Login -->
+<button class="w-full flex items-center justify-center gap-3 py-3 px-4 border border-outline-variant rounded-xl bg-surface hover:bg-surface-container transition-all active:scale-[0.98]">
+<svg class="w-5 h-5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="text-label-md font-label-md text-on-surface">Continue with Google</span>
+</button>
+<div class="relative my-8 flex items-center">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="px-4 text-label-sm font-label-sm text-outline uppercase tracking-widest">or</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Registration Form -->
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<div class="space-y-1.5">
+<label class="text-label-sm font-label-sm text-on-surface-variant ml-1" for="full_name">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="person">person</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline-variant" id="full_name" placeholder="Institutional Name" type="text"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-label-sm font-label-sm text-on-surface-variant ml-1" for="email">Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="mail">mail</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline-variant" id="email" placeholder="name@organization.gov" type="email"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-label-sm font-label-sm text-on-surface-variant ml-1" for="password">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="lock">lock</span>
+<input class="w-full pl-12 pr-12 py-3 bg-surface border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline-variant" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface-variant" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 px-6 rounded-xl font-bold text-label-md hover:bg-primary-container transition-all active:scale-[0.98] shadow-sm flex items-center justify-center gap-2" type="submit">
+                            Create Account
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<p class="mt-8 text-center text-label-md font-label-md text-on-surface-variant">
+                        Already have an account? 
+                        <a class="text-primary font-bold hover:underline" href="#">Sign in</a>
+</p>
+<!-- Mission Note -->
+<div class="mt-10 p-4 bg-surface-container-low rounded-lg border border-outline-variant flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5" data-icon="info">info</span>
+<p class="text-label-sm font-label-sm text-on-surface-variant leading-relaxed">
+<span class="font-bold text-on-surface">Our Mission:</span> Verix is committed to institutional transparency. Every account created strengthens the ecosystem of verified civic duty and impact reporting.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter py-8 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto items-center">
+<div class="text-center md:text-left">
+<span class="text-headline-sm font-headline-sm font-bold text-primary dark:text-inverse-primary block mb-2">Verix</span>
+<p class="text-body-md font-body-md text-on-tertiary-fixed-variant dark:text-on-tertiary-fixed-variant">
+                    © 2024 Verix. Dedicated to institutional transparency and civic duty.
+                </p>
+</div>
+<div class="flex justify-center md:justify-end gap-gutter">
+<a class="text-label-md font-label-md text-on-tertiary-fixed-variant dark:text-on-tertiary-fixed-variant hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors active:translate-y-[-1px] transition-transform" href="#">About</a>
+<a class="text-label-md font-label-md text-on-tertiary-fixed-variant dark:text-on-tertiary-fixed-variant hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors active:translate-y-[-1px] transition-transform" href="#">Submit</a>
+<a class="text-label-md font-label-md text-on-tertiary-fixed-variant dark:text-on-tertiary-fixed-variant hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors active:translate-y-[-1px] transition-transform" href="#">Leaderboard</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for password visibility toggle
+        const toggleBtn = document.querySelector('button[type="button"]');
+        const passwordInput = document.querySelector('#password');
+        
+        if (toggleBtn && passwordInput) {
+            toggleBtn.addEventListener('click', () => {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                const icon = toggleBtn.querySelector('.material-symbols-outlined');
+                icon.textContent = type === 'password' ? 'visibility' : 'visibility_off';
+            });
+        }
+
+        // Mouse follow atmospheric effect
+        document.addEventListener('mousemove', (e) => {
+            const blobs = document.querySelectorAll('.absolute.rounded-full');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            blobs[0].style.transform = `translate(${x * 30}px, ${y * 30}px)`;
+            blobs[1].style.transform = `translate(${x * -20}px, ${y * -20}px)`;
+        });
+    </script>
+</body></html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verix | Public Leaderboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #E0E0E0;
+        }
+        /* Custom scrollbar for data tables */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #006a36;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e6e9e8",
+                        "inverse-primary": "#70dc91",
+                        "primary-fixed-dim": "#70dc91",
+                        "on-tertiary-fixed-variant": "#34495e",
+                        "primary-fixed": "#8cf9ab",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#191c1c",
+                        "on-background": "#191c1c",
+                        "surface-variant": "#e1e3e2",
+                        "outline-variant": "#bdcabc",
+                        "primary-container": "#008646",
+                        "surface-dim": "#d8dad9",
+                        "surface": "#f8faf9",
+                        "on-primary-container": "#f6fff4",
+                        "tertiary-fixed-dim": "#b3c9e3",
+                        "primary": "#006a36",
+                        "tertiary-container": "#62778e",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2e3131",
+                        "background": "#f8faf9",
+                        "on-surface-variant": "#3e4a3f",
+                        "inverse-on-surface": "#eff1f0",
+                        "secondary-fixed-dim": "#9acbff",
+                        "surface-container": "#eceeed",
+                        "on-primary-fixed-variant": "#005228",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f2f4f3",
+                        "on-secondary-fixed-variant": "#004a78",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00210d",
+                        "tertiary": "#495e74",
+                        "surface-container-highest": "#e1e3e2",
+                        "on-tertiary-fixed": "#051d30",
+                        "secondary-container": "#7cbeff",
+                        "outline": "#6e7a6e",
+                        "secondary-fixed": "#cfe5ff",
+                        "on-secondary-fixed": "#001d34",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8faf9",
+                        "surface-tint": "#006d37",
+                        "on-tertiary-container": "#fdfcff",
+                        "tertiary-fixed": "#cfe5ff",
+                        "on-secondary-container": "#004c7c",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#02629e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary">Verix</span>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-label-md text-label-md" href="#">About</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-label-md text-label-md" href="#">Submit</a>
+<a class="text-primary dark:text-inverse-primary font-bold font-label-md text-label-md" href="#">Leaderboard</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">search</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a person with a friendly expression, captured in soft, natural morning light. The background is a clean, minimalist architectural space with muted tones of forest green and white, echoing a corporate yet innovative atmosphere. 8k resolution, cinematic quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-PqNWxuy8GXNOwqfrNZarNLuWzTN3fM0p-ukusmydKE5Y3dzrdkAAsp68Wb4Hl8RD4xfjXE_HAf4l7ln5KERimAmUBh5DWX-PE5l35VegofRtVNajwxDmohroXNU5tdy_yJmAhnX3U_wkgl9haGnX9a9vHrIq81Y4I8_lhhfnzRwo6JQdhzV7t6GT0bOmJlgokLnt21E5CbYyHX8Mne6TlzH5Xz0GLpqXgxyv2i6UHGOIewndPzC_OLJE4xZrCDb9JX-ytMaIDUwd"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+<!-- Hero Section -->
+<div class="mb-12 text-center md:text-left max-w-3xl">
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg mb-2 text-on-surface">Top Impact Contributors</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Recognizing those leading the way in verifiable global impact through transparent reporting and rigorous civic duty.</p>
+</div>
+<!-- Leaderboard Controls -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+<div class="flex items-center gap-2 glass-panel px-4 py-2 rounded-xl">
+<span class="text-label-md font-label-md text-on-surface-variant">Privacy Settings</span>
+<div class="h-4 w-px bg-outline-variant mx-2"></div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+<span class="ml-3 text-label-md font-label-md text-on-surface">Show me on leaderboard</span>
+</label>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors text-label-md font-label-md">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                    All Time
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors text-label-md font-label-md">
+<span class="material-symbols-outlined text-sm">download</span>
+                    Export CSV
+                </button>
+</div>
+</div>
+<!-- Leaderboard Table Container -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Rank</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Contributor</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider text-center">Verified Proofs</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider text-right">Average Score</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Rank 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-6">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-[#FFD700]/10 border border-[#FFD700]/50 text-[#B8860B] font-bold">
+                                1
+                            </div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="Close-up portrait of a woman with glasses, professional attire, against a soft blurred office background with green plants. The image has a clean, high-contrast corporate look with natural daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGn9EVakqHPJRn1f9zBqMDGuXAFOSZOlEY_fIlizUU4JlulS8mz49PXK13vBurbSUqxMfPbJF2SKGHOTJv9Q3t1Ok-ErIoJdO_Yl1byJAyHdawv_ZsJwDIajGUwFJMWS7DqMHRyL3jZLK6kznyG13J3IXm-4Kq2XA1aLAQekwycs1vxirVc82rVTG1hu90fPFaU4EZaOceRK9MP-tgy9ZtA2acBlndOP4six1uoAV14wnIJwzRySsjIHdgY-qN7nFXGz5t_CH9l-Ii"/>
+<div>
+<p class="font-bold text-on-surface">Eleanor Vance</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Oxford Research Initiative</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 text-center">
+<span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary rounded-full text-label-sm font-label-sm">
+                                1,284
+                            </span>
+</td>
+<td class="px-6 py-6 text-right font-bold text-primary">98.4</td>
+</tr>
+<!-- Rank 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-6">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-[#C0C0C0]/10 border border-[#C0C0C0]/50 text-[#708090] font-bold">
+                                2
+                            </div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="Professional profile photo of a man in a dark navy blazer, smiling warmly. The lighting is sophisticated and directional, creating depth. Modern workspace background with clean lines and glass elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChDRh7WMjhA5dxUJR7WLxhJF_ypdKlYMlfDdM7f2hN9QXQO3zIgA0S7Dp07mNuIE1afw2e_ivdka6A7mCq5CZ1Rrz-RAi9WcyRRXja19qL2A8Y0Hvaz20piSfcCVu_n3PYbCSj7I11lkqD13aQHujP6oCdPoWgS1HrFIbxZXPeLQULXQEgKHn5vfx5TSQrbQtSrnlT_Cxr1j2CKNnJFrW3ZZyaGgdFXvqnbSL02tO27E_bPXYkBi6YARsB5EvQ9N43XXZieitDnhP5"/>
+<div>
+<p class="font-bold text-on-surface">Dr. Marcus Thorne</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Global Sustainability Lab</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 text-center">
+<span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary rounded-full text-label-sm font-label-sm">
+                                1,102
+                            </span>
+</td>
+<td class="px-6 py-6 text-right font-bold text-primary">97.1</td>
+</tr>
+<!-- Rank 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-6">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-[#CD7F32]/10 border border-[#CD7F32]/50 text-[#8B4513] font-bold">
+                                3
+                            </div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="Portrait of an environmental scientist in the field, wearing professional outdoor gear. Background shows a blurred reforestation site. Clear, high-definition photography with a focus on trust and authenticity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3puxkxb68CPGYet4yWsNduY-d8UYo-W_EdpcJUUUMPMyUk3j5JddYaHwTAd6j2Ymbg1jrguOGvtiB6Gl2R4fTpHXe_YYpmkdfJTV_OjtsOlJawmdd1GWyYwuf6E4kjzRu0eIABrXLWvbUKmWaqJVYo6UJcn5W-GzoaRX03c70I520q1v77YB_DPVx5xzAS_ay6Zsjn0Y7btj_N6qcPfdT6OCMSOJxnk08jnuHgxo-ckNEx3_2HJO3bNumpmEyrK-uhn5bG932UGDM"/>
+<div>
+<p class="font-bold text-on-surface">Sarah Jenkins</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Independent Verifier</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 text-center">
+<span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary rounded-full text-label-sm font-label-sm">
+                                956
+                            </span>
+</td>
+<td class="px-6 py-6 text-right font-bold text-primary">96.8</td>
+</tr>
+<!-- Standard Rows -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-6">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-container-high text-on-surface-variant font-medium">
+                                4
+                            </div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="Business professional avatar, diverse background, minimalist aesthetic, neutral color palette, studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMry5JlOdOz5gNHiDyedmZ3funk3_Kqw80fEXO5WCUMQjmHykmOQNMqZvFbm0juqJ6v9G6APoaMfw0tSwjBkIJM686fS6VwYLMQQqIRqr5LxHTh4nFNk5tdDlBupJZwAwE1n-TiN18KJDpOqnbZDOLRZqdd7xO7-OaDNHYkszlzXLywPrMt-TOfNdJjAOtY_T3d1zGNGhmS2VBTXyHvP0Dk0NcV7F78wPZcLZJSXLtK26MZ_DAwE7i6elxWksvwl0bCFXI3syOLX5q"/>
+<div>
+<p class="font-bold text-on-surface">Julian Rossi</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Civic Data Foundation</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 text-center">
+<span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary rounded-full text-label-sm font-label-sm">
+                                842
+                            </span>
+</td>
+<td class="px-6 py-6 text-right font-bold text-primary">94.2</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-6">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-container-high text-on-surface-variant font-medium">
+                                5
+                            </div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="Close up of a professional in their 30s, natural lighting, looking at the camera, modern office vibes, corporate minimalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJWQrzen8dIPVwqyEmFVmJa-A3IRA_xWms4NoHoJpItql5jkoL_Og-73QhcR2isYjtg73ZSC1kwmhqzPC1O-pSaZgL87xn3Mm5sYdy1PYB5YV8w5YSequE26bZ6HoIaoIwpWomXd5dG8yGe53FQbwIIxnXvXGdM3Q_BV10ELoKFoziyBJpZtpSSn9IjZz-W7dRqpsaifMrx42R6n56aP5Zqae_jIN1abmiq2lnlclfO-P1Y8hDRIrh_9uVR2iAy_pViuCmWFy2YnY1"/>
+<div>
+<p class="font-bold text-on-surface">Amara Okafor</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">West African Impact Hub</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 text-center">
+<span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary rounded-full text-label-sm font-label-sm">
+                                791
+                            </span>
+</td>
+<td class="px-6 py-6 text-right font-bold text-primary">93.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="mt-8 flex items-center justify-between px-2">
+<p class="text-label-sm font-label-sm text-on-surface-variant">Showing 5 of 1,248 contributors</p>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center w-10 h-10 rounded-lg border border-outline-variant hover:bg-surface-container transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex gap-1">
+<button class="w-10 h-10 rounded-lg bg-primary text-on-primary font-bold">1</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant hover:bg-surface-container transition-colors font-medium">2</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant hover:bg-surface-container transition-colors font-medium">3</button>
+<span class="flex items-center justify-center w-10 h-10">...</span>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-lg border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Top Impact Cards (Visual Variety) -->
+<div class="mt-20">
+<h2 class="text-headline-md font-headline-md mb-8">Honorable Mentions</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-4 right-4 bg-primary/10 text-primary rounded-full p-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<p class="text-label-sm font-label-sm text-primary uppercase tracking-widest mb-2">Fastest Grower</p>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-1">EcoWatch AI</h3>
+<p class="text-body-md text-on-surface-variant mb-4">+240% proofs this month</p>
+<div class="flex items-center gap-2">
+<div class="h-1 flex-grow bg-outline-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4"></div>
+</div>
+<span class="text-label-sm font-label-sm font-bold text-on-surface">75%</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-4 right-4 bg-secondary/10 text-secondary rounded-full p-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<p class="text-label-sm font-label-sm text-secondary uppercase tracking-widest mb-2">Perfect Verifier</p>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-1">OpenCivic</h3>
+<p class="text-body-md text-on-surface-variant mb-4">100/100 Accuracy Score</p>
+<div class="flex items-center gap-2">
+<div class="h-1 flex-grow bg-outline-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-full"></div>
+</div>
+<span class="text-label-sm font-label-sm font-bold text-on-surface">100%</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-4 right-4 bg-tertiary/10 text-tertiary rounded-full p-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">public</span>
+</div>
+<p class="text-label-sm font-label-sm text-tertiary uppercase tracking-widest mb-2">Community MVP</p>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-1">RuralLink Net</h3>
+<p class="text-body-md text-on-surface-variant mb-4">Largest geographic reach</p>
+<div class="flex items-center gap-2">
+<div class="h-1 flex-grow bg-outline-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-1/2"></div>
+</div>
+<span class="text-label-sm font-label-sm font-bold text-on-surface">50%</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline mt-16">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div>
+<span class="text-headline-sm font-headline-sm font-bold text-primary dark:text-inverse-primary block mb-4">Verix</span>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-sm">
+                    © 2024 Verix. Dedicated to institutional transparency and civic duty. Leveraging AI for a verifiable future.
+                </p>
+</div>
+<div class="flex flex-col md:items-end gap-6">
+<div class="flex gap-8">
+<a class="text-on-tertiary-fixed-variant hover:text-secondary transition-colors text-label-md font-label-md" href="#">About</a>
+<a class="text-on-tertiary-fixed-variant hover:text-secondary transition-colors text-label-md font-label-md" href="#">Submit</a>
+<a class="text-primary dark:text-inverse-primary underline text-label-md font-label-md" href="#">Leaderboard</a>
+</div>
+<div class="flex gap-4">
+<a class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-primary/5 transition-all active:translate-y-[-1px]" href="#">
+<span class="material-symbols-outlined text-on-surface-variant">language</span>
+</a>
+<a class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-primary/5 transition-all active:translate-y-[-1px]" href="#">
+<span class="material-symbols-outlined text-on-surface-variant">shield</span>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple interactivity for leaderboard rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('click', () => {
+                // Mock selection logic
+                document.querySelectorAll('tbody tr').forEach(r => r.classList.remove('bg-surface-container'));
+                row.classList.add('bg-surface-container');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verix | Submit Proof</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#e6e9e8",
+                    "inverse-primary": "#70dc91",
+                    "primary-fixed-dim": "#70dc91",
+                    "on-tertiary-fixed-variant": "#34495e",
+                    "primary-fixed": "#8cf9ab",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#191c1c",
+                    "on-background": "#191c1c",
+                    "surface-variant": "#e1e3e2",
+                    "outline-variant": "#bdcabc",
+                    "primary-container": "#008646",
+                    "surface-dim": "#d8dad9",
+                    "surface": "#f8faf9",
+                    "on-primary-container": "#f6fff4",
+                    "tertiary-fixed-dim": "#b3c9e3",
+                    "primary": "#006a36",
+                    "tertiary-container": "#62778e",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2e3131",
+                    "background": "#f8faf9",
+                    "on-surface-variant": "#3e4a3f",
+                    "inverse-on-surface": "#eff1f0",
+                    "secondary-fixed-dim": "#9acbff",
+                    "surface-container": "#eceeed",
+                    "on-primary-fixed-variant": "#005228",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#f2f4f3",
+                    "on-secondary-fixed-variant": "#004a78",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#00210d",
+                    "tertiary": "#495e74",
+                    "surface-container-highest": "#e1e3e2",
+                    "on-tertiary-fixed": "#051d30",
+                    "secondary-container": "#7cbeff",
+                    "outline": "#6e7a6e",
+                    "secondary-fixed": "#cfe5ff",
+                    "on-secondary-fixed": "#001d34",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f8faf9",
+                    "surface-tint": "#006d37",
+                    "on-tertiary-container": "#fdfcff",
+                    "tertiary-fixed": "#cfe5ff",
+                    "on-secondary-container": "#004c7c",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#02629e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-desktop": "40px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-inactive { display: none; }
+        .focus-ring:focus-within { border-color: #006a36; ring: 2px; ring-color: #006a36; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface flex flex-col min-h-screen">
+<!-- Top Navigation -->
+<header class="bg-surface sticky top-0 z-50 border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="verified">verified</span>
+<span class="text-headline-md font-headline-md font-bold text-primary">Verix</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female environmental researcher with a neutral, focused expression. The lighting is soft and natural, suggesting a modern laboratory or workspace. The background is a clean, blurred office environment with hints of professional equipment, maintaining a high-contrast corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVjsF3hm3Ye3gOoVb_t6uSd0JYX-PIif4GDmkkRax2-LWyfifvU6oABjJVQ3qdihC3XAMK4Cc7Mz5cAv6VbDxW8jm5DyPp8_z1-3BYczOSyg3Hr6kbYzeaXeD9VTjuFh4_i7ETRNfE4Amtn54KXUk-ldwve-Ht8NSi99-SZK_tTeo72--mQ4AVmZHE3poShB2047h2_G2dBNT4g9IEFyGvoVb2Dzhnin3fQlzee2ydI8tOPE4TpP3v1_lWsrM1gPPP7pCU1n5D-0-U"/>
+</div>
+</div>
+</header>
+<!-- Progress Indicator -->
+<div class="w-full bg-surface-container-low px-margin-mobile py-4 border-b border-outline-variant">
+<div class="max-w-container-max mx-auto flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Step <span id="current-step-num">1</span> of 2</span>
+<h1 class="text-headline-md font-headline-md text-primary" id="step-title">Impact Details</h1>
+</div>
+<div class="flex gap-2">
+<div class="w-8 h-2 rounded-full bg-primary transition-colors" id="dot-1"></div>
+<div class="w-8 h-2 rounded-full bg-surface-variant transition-colors" id="dot-2"></div>
+</div>
+</div>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-2xl mx-auto px-margin-mobile py-8">
+<form class="space-y-8" id="submission-form">
+<!-- Step 1: Impact Details -->
+<section class="space-y-6" id="step-1">
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Title</label>
+<input class="w-full p-4 rounded-xl border border-outline-variant bg-surface focus:outline-none focus:border-primary transition-all text-body-md font-body-md placeholder:text-outline" maxlength="100" placeholder="e.g., Reforestation at Sector G-4" required="" type="text"/>
+<div class="flex justify-end">
+<span class="text-label-sm font-label-sm text-outline">Max 100 characters</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Description</label>
+<textarea class="w-full p-4 rounded-xl border border-outline-variant bg-surface focus:outline-none focus:border-primary transition-all text-body-md font-body-md placeholder:text-outline" maxlength="500" placeholder="Describe the verified impact and specific actions taken..." required="" rows="4"></textarea>
+<div class="flex justify-end">
+<span class="text-label-sm font-label-sm text-outline">Max 500 characters</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Location (Optional)</label>
+<div class="relative">
+<input class="w-full p-4 pl-12 rounded-xl border border-outline-variant bg-surface focus:outline-none focus:border-primary transition-all text-body-md font-body-md placeholder:text-outline" placeholder="Enter coordinates or address" type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="location_on">location_on</span>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm active:scale-[0.98]" onclick="nextStep()" type="button">
+                    Next: Photo Evidence
+                </button>
+</section>
+<!-- Step 2: Photo Evidence -->
+<section class="step-inactive space-y-6" id="step-2">
+<div class="bg-secondary-fixed/10 p-4 rounded-xl flex items-start gap-3 border border-secondary-container">
+<span class="material-symbols-outlined text-secondary" data-icon="lightbulb">lightbulb</span>
+<p class="text-label-md font-label-md text-on-secondary-fixed-variant">Make sure both photos are from the same angle for better AI confidence.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Before Photo -->
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Before</label>
+<div class="relative group cursor-pointer border-2 border-dashed border-outline-variant rounded-xl aspect-square flex flex-col items-center justify-center gap-3 bg-surface-container-lowest hover:bg-surface-container-low hover:border-primary transition-all">
+<input accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer" type="file"/>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-4xl" data-icon="camera">camera</span>
+<div class="text-center px-4">
+<p class="text-label-md font-label-md text-on-surface">Upload Before Photo</p>
+<p class="text-label-sm font-label-sm text-outline">Drag and drop or click</p>
+</div>
+</div>
+</div>
+<!-- After Photo -->
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">After</label>
+<div class="relative group cursor-pointer border-2 border-dashed border-outline-variant rounded-xl aspect-square flex flex-col items-center justify-center gap-3 bg-surface-container-lowest hover:bg-surface-container-low hover:border-primary transition-all">
+<input accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer" type="file"/>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors text-4xl" data-icon="camera">camera</span>
+<div class="text-center px-4">
+<p class="text-label-md font-label-md text-on-surface">Upload After Photo</p>
+<p class="text-label-sm font-label-sm text-outline">Drag and drop or click</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 pt-4">
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm active:scale-[0.98]" type="submit">
+                        Submit for AI Verification
+                    </button>
+<button class="w-full bg-transparent text-outline-variant border border-outline-variant py-4 rounded-xl font-label-md text-label-md hover:bg-surface-container transition-colors" onclick="prevStep()" type="button">
+                        Back to Details
+                    </button>
+</div>
+</section>
+</form>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant mt-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter py-8 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="space-y-2">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">Verix</span>
+<p class="text-body-md font-body-md text-on-tertiary-fixed-variant">© 2024 Verix. Dedicated to institutional transparency and civic duty.</p>
+</div>
+<div class="flex gap-6 md:justify-end items-center">
+<a class="text-label-md font-label-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">About</a>
+<a class="text-label-md font-label-md text-primary font-bold transition-colors" href="#">Submit</a>
+<a class="text-label-md font-label-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">Leaderboard</a>
+</div>
+</div>
+</footer>
+<script>
+        function nextStep() {
+            const step1 = document.getElementById('step-1');
+            const step2 = document.getElementById('step-2');
+            const title = document.getElementById('step-title');
+            const num = document.getElementById('current-step-num');
+            const dot1 = document.getElementById('dot-1');
+            const dot2 = document.getElementById('dot-2');
+
+            step1.classList.add('step-inactive');
+            step2.classList.remove('step-inactive');
+            title.innerText = 'Photo Evidence';
+            num.innerText = '2';
+            dot1.classList.remove('bg-primary');
+            dot1.classList.add('bg-surface-variant');
+            dot2.classList.remove('bg-surface-variant');
+            dot2.classList.add('bg-primary');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function prevStep() {
+            const step1 = document.getElementById('step-1');
+            const step2 = document.getElementById('step-2');
+            const title = document.getElementById('step-title');
+            const num = document.getElementById('current-step-num');
+            const dot1 = document.getElementById('dot-1');
+            const dot2 = document.getElementById('dot-2');
+
+            step2.classList.add('step-inactive');
+            step1.classList.remove('step-inactive');
+            title.innerText = 'Impact Details';
+            num.innerText = '1';
+            dot2.classList.remove('bg-primary');
+            dot2.classList.add('bg-surface-variant');
+            dot1.classList.remove('bg-surface-variant');
+            dot1.classList.add('bg-primary');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.getElementById('submission-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Your proof has been submitted for AI verification. You will receive an update shortly.');
+        });
+    </script>
+</body></html>

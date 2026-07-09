@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile Settings | Verix</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #bdcabc;
+            border-radius: 10px;
+        }
+        /* Toggle Switch Styling */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #006a36;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #006a36;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2e3131",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#8cf9ab",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#00210d",
+                        "on-tertiary-fixed": "#051d30",
+                        "tertiary-fixed": "#cfe5ff",
+                        "outline-variant": "#bdcabc",
+                        "secondary-fixed-dim": "#9acbff",
+                        "on-surface": "#191c1c",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#006d37",
+                        "tertiary-fixed-dim": "#b3c9e3",
+                        "surface-bright": "#f8faf9",
+                        "tertiary-container": "#62778e",
+                        "tertiary": "#495e74",
+                        "primary-fixed-dim": "#70dc91",
+                        "on-secondary-fixed-variant": "#004a78",
+                        "surface-dim": "#d8dad9",
+                        "surface-variant": "#e1e3e2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#001d34",
+                        "inverse-on-surface": "#eff1f0",
+                        "on-background": "#191c1c",
+                        "surface": "#f8faf9",
+                        "primary-container": "#008646",
+                        "primary": "#006a36",
+                        "on-secondary-container": "#004c7c",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#cfe5ff",
+                        "on-primary-fixed-variant": "#005228",
+                        "on-primary-container": "#f6fff4",
+                        "on-error": "#ffffff",
+                        "secondary": "#02629e",
+                        "surface-container": "#eceeed",
+                        "secondary-container": "#7cbeff",
+                        "background": "#f8faf9",
+                        "outline": "#6e7a6e",
+                        "on-tertiary-fixed-variant": "#34495e",
+                        "on-surface-variant": "#3e4a3f",
+                        "surface-container-low": "#f2f4f3",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#fdfcff",
+                        "surface-container-highest": "#e1e3e2",
+                        "surface-container-high": "#e6e9e8",
+                        "inverse-primary": "#70dc91"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar from JSON Authority -->
+<header class="fixed top-0 z-50 w-full bg-surface border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[28px]" data-icon="verified">verified</span>
+<span class="text-headline-md font-headline-md font-bold text-primary">Verix</span>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="#">Impact</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary-container transition-colors" href="#">Explore</a>
+<a class="text-label-md font-label-md text-primary font-bold transition-colors" href="#">Profile</a>
+</nav>
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, professional headshot of a diverse user in a brightly lit, minimalist office environment. The lighting is soft and natural, emphasizing clarity and transparency. The background is a slightly blurred architectural space with hints of green indoor plants, maintaining the Forest Green and Soft Gray brand palette of Verix." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYDh0se0p6egi_0egPm5gukMDpskfb3oq8IGqn82qDi5GjVjRSNoqKJvaVjY6fEHSiIJgjvFdebJrfQq6PEKQ6JGWNMsrcLEQ2Zb7v-PRpzqkZPQjcjmJDQ7q3fHC2f7nlICcVcJQS_5JeeF3bbjQfQv2H2TdoIop9A7Hw_h755Rzkr0oqmbO53cxRgxHPOJ2_ebvMUNFG4aHfQBoZe_r0KIZGEpmh3PbhJb2EwtkIY53SWW3lO5zUEEeM_gqEylCM_XeryLQqMz7b"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-16 px-margin-mobile md:px-margin-desktop max-w-[800px] mx-auto w-full">
+<!-- Page Header -->
+<div class="mb-8">
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface mb-2">Profile Settings</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Manage your institutional identity and verification preferences.</p>
+</div>
+<div class="space-y-gutter">
+<!-- Avatar Section -->
+<section class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant">
+<div class="flex flex-col md:flex-row items-center gap-6">
+<div class="relative group">
+<div class="w-24 h-24 rounded-full overflow-hidden border-2 border-outline-variant bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A high-quality profile picture placeholder showing a stylized geometric icon representing human verification. The colors are muted grays and crisp whites with a single primary green accent. The style is modern, corporate, and minimalist, fitting for an AI-powered transparency platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByiqZuavEuvqGDAOwBa6tdMMyiDd9-2LMRk5fc5PAEKjwFYU19mc4iTUfXDEqOOnm4Vw7gRsTfQUPwpbni9iLcNPnNqK2Ug7AQoyA2s95UXyurGULLmrv4mfcW3mmSodstfJ9w8IVj9ocunVKa1mt0V8mpaqtNVOe_fdmZ3AkcvXywD3cLN9Mk10t_4u86155FUjeTviUYrJsHezikVqvOJHVvbXHMvDdZwoDUawKA5HelflxCI5RJdnIpbexgrRE7ASn2W11Ub9eK"/>
+</div>
+<button class="absolute bottom-0 right-0 bg-primary text-on-primary p-2 rounded-full shadow-lg hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="text-center md:text-left flex-grow">
+<h3 class="text-headline-md font-headline-md text-on-surface">Your Identity</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4">Verification tiers are higher with a complete profile.</p>
+<div class="flex flex-wrap justify-center md:justify-start gap-2">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg text-label-md font-label-md hover:opacity-90 transition-all">Upload New</button>
+<button class="px-4 py-2 border border-outline-variant text-on-surface-variant rounded-lg text-label-md font-label-md hover:bg-surface-container-low transition-all">Remove</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Basic Info Section -->
+<section class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant">
+<div class="grid grid-cols-1 gap-6">
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface" for="display-name">Display Name</label>
+<input class="w-full px-4 py-3 rounded-xl border border-outline text-body-md font-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none bg-surface transition-all" id="display-name" type="text" value="Alexander Verity"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface" for="bio">Bio</label>
+<textarea class="w-full px-4 py-3 rounded-xl border border-outline text-body-md font-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none bg-surface transition-all resize-none" id="bio" placeholder="Briefly describe your focus on civic impact..." rows="4">Environmental verification specialist focused on carbon credit transparency and civic auditing since 2021.</textarea>
+</div>
+</div>
+</section>
+<!-- Preferences Section -->
+<section class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-6">Transparency Controls</h3>
+<div class="space-y-6">
+<!-- Toggle: Leaderboard -->
+<div class="flex items-center justify-between py-2">
+<div class="max-w-[80%]">
+<p class="text-label-md font-label-md text-on-surface">Show me on the public leaderboard</p>
+<p class="text-body-md font-body-md text-on-surface-variant">Allow your impact score to be visible to the Verix community.</p>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none" id="toggle" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-highest cursor-pointer" for="toggle"></label>
+</div>
+</div>
+<!-- Anonymity Preferences -->
+<div class="pt-6 border-t border-outline-variant">
+<h4 class="text-label-md font-label-md text-on-surface mb-4">Anonymity Preferences</h4>
+<label class="flex items-start gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 cursor-pointer appearance-none rounded border border-outline checked:bg-primary checked:border-primary transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-white opacity-0 peer-checked:opacity-100 text-[16px] pointer-events-none left-1/2 -translate-x-1/2" data-icon="check">check</span>
+</div>
+<div class="select-none">
+<p class="text-body-md font-body-md text-on-surface group-hover:text-primary transition-colors">Submit proofs anonymously by default</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Your identity will be hidden from the public impact log even for verified claims.</p>
+</div>
+</label>
+</div>
+</div>
+</section>
+<!-- Danger Zone -->
+<section class="bg-surface-container-low p-6 rounded-xl border border-error/20">
+<h3 class="text-label-md font-label-md text-error mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="warning">warning</span>
+                    Danger Zone
+                </h3>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<p class="text-body-md font-body-md text-on-surface-variant">Permanently delete your account and all associated verification history. This action cannot be undone.</p>
+<button class="text-error font-bold text-label-md hover:underline transition-all flex items-center gap-1 whitespace-nowrap">
+                        Delete Account
+                    </button>
+</div>
+</section>
+<!-- Save Action -->
+<div class="flex justify-end pt-4">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-xl font-bold text-label-md hover:bg-primary-container transition-all shadow-sm active:scale-[0.98]">
+                    Save All Changes
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer from JSON Authority -->
+<footer class="bg-surface-container-low border-t border-outline-variant mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="verified">verified</span>
+<span class="text-headline-sm font-headline-sm font-bold text-primary">Verix</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-sm">
+                    © 2024 Verix. Dedicated to institutional transparency and civic duty.
+                </p>
+</div>
+<div class="flex flex-col md:items-end justify-between">
+<div class="flex gap-8 mb-8 md:mb-0">
+<a class="text-label-md font-label-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">About</a>
+<a class="text-label-md font-label-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">Submit</a>
+<a class="text-label-md font-label-md text-on-tertiary-fixed-variant hover:text-secondary transition-colors" href="#">Leaderboard</a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="share">share</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="policy">policy</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Interaction Logic
+        document.querySelectorAll('input, textarea').forEach(el => {
+            el.addEventListener('focus', () => {
+                el.parentElement.querySelector('label')?.classList.add('text-primary');
+            });
+            el.addEventListener('blur', () => {
+                el.parentElement.querySelector('label')?.classList.remove('text-primary');
+            });
+        });
+
+        // Toggle Switch Animation Placeholder
+        const toggle = document.getElementById('toggle');
+        toggle.addEventListener('change', function() {
+            if(this.checked) {
+                console.log("Public visibility enabled");
+            } else {
+                console.log("Public visibility disabled");
+            }
+        });
+
+        // Save notification simulation
+        document.querySelector('button.bg-primary').addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span> Saving...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined" data-icon="done">done</span> Saved!';
+                btn.classList.replace('bg-primary', 'bg-secondary');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.replace('bg-secondary', 'bg-primary');
+                    btn.disabled = false;
+                }, 2000);
+            }, 1000);
+        });
+    </script>
+</body></html>
