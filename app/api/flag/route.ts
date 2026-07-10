@@ -5,7 +5,9 @@ import { checkRateLimit } from '@/lib/redis/rate-limit'
 export async function POST(req: NextRequest) {
   try {
     const supabase = createServerClient()
-    const { data: { session } } = await supabase.auth.getSession()
+    const {
+      data: { session },
+    } = await supabase.auth.getSession()
 
     if (!session) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -13,13 +15,16 @@ export async function POST(req: NextRequest) {
 
     const { success } = await checkRateLimit(session.user.id)
     if (!success) {
-      return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
+      return NextResponse.json(
+        { error: 'Rate limit exceeded' },
+        { status: 429 }
+      )
     }
 
     const { proofId, reason } = await req.json()
 
     const { data: existingFlag } = await supabase
-      .from('flags')
+      .from('moderation_flags')
       .select('id')
       .eq('proof_id', proofId)
       .eq('user_id', session.user.id)
@@ -32,11 +37,13 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const { error: flagError } = await supabase.from('flags').insert({
-      proof_id: proofId,
-      user_id: session.user.id,
-      reason,
-    })
+    const { error: flagError } = await supabase
+      .from('moderation_flags')
+      .insert({
+        proof_id: proofId,
+        user_id: session.user.id,
+        reason,
+      })
 
     if (flagError) throw flagError
 
@@ -51,9 +58,6 @@ export async function POST(req: NextRequest) {
     )
   } catch (error) {
     console.error('Flag error:', error)
-    return NextResponse.json(
-      { error: 'Failed to flag proof' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Failed to flag proof' }, { status: 500 })
   }
 }

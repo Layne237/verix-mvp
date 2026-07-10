@@ -1,4 +1,10 @@
-export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[]
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
 
 export interface Database {
   public: {
@@ -8,9 +14,12 @@ export interface Database {
           id: string
           email: string
           display_name: string | null
+          name: string | null
           avatar_url: string | null
-          role: 'user' | 'admin' | 'moderator'
+          role: string
           is_verified: boolean
+          total_verified: number
+          show_on_leaderboard: boolean
           created_at: string
           updated_at: string
         }
@@ -18,9 +27,12 @@ export interface Database {
           id: string
           email: string
           display_name?: string | null
+          name?: string | null
           avatar_url?: string | null
-          role?: 'user' | 'admin' | 'moderator'
+          role?: string
           is_verified?: boolean
+          total_verified?: number
+          show_on_leaderboard?: boolean
           created_at?: string
           updated_at?: string
         }
@@ -28,9 +40,12 @@ export interface Database {
           id?: string
           email?: string
           display_name?: string | null
+          name?: string | null
           avatar_url?: string | null
-          role?: 'user' | 'admin' | 'moderator'
+          role?: string
           is_verified?: boolean
+          total_verified?: number
+          show_on_leaderboard?: boolean
           created_at?: string
           updated_at?: string
         }
@@ -42,191 +57,181 @@ export interface Database {
           user_id: string
           title: string
           description: string | null
-          action_type: string
+          category: string | null
+          action_type: string | null
+          location: string | null
           before_image_url: string
           after_image_url: string
           latitude: number | null
           longitude: number | null
           location_name: string | null
           verification_score: number | null
+          confidence_score: number | null
           verification_data: Json | null
+          ai_reasoning: string | null
           verification_reasoning: string | null
           status: string
           is_deleted: boolean
+          is_anonymous: boolean
+          view_count: number
+          before_description: string | null
+          after_description: string | null
           created_at: string
           updated_at: string
+          verified_at: string | null
         }
         Insert: {
           id?: string
           user_id: string
           title: string
           description?: string | null
-          action_type: string
+          category?: string | null
+          action_type?: string | null
+          location?: string | null
           before_image_url: string
           after_image_url: string
           latitude?: number | null
           longitude?: number | null
           location_name?: string | null
           verification_score?: number | null
+          confidence_score?: number | null
           verification_data?: Json | null
+          ai_reasoning?: string | null
           verification_reasoning?: string | null
           status?: string
           is_deleted?: boolean
+          is_anonymous?: boolean
+          view_count?: number
+          before_description?: string | null
+          after_description?: string | null
           created_at?: string
           updated_at?: string
+          verified_at?: string | null
         }
         Update: {
           id?: string
           user_id?: string
           title?: string
           description?: string | null
-          action_type?: string
+          category?: string | null
+          action_type?: string | null
+          location?: string | null
           before_image_url?: string
           after_image_url?: string
           latitude?: number | null
           longitude?: number | null
           location_name?: string | null
           verification_score?: number | null
+          confidence_score?: number | null
           verification_data?: Json | null
+          ai_reasoning?: string | null
           verification_reasoning?: string | null
           status?: string
           is_deleted?: boolean
+          is_anonymous?: boolean
+          view_count?: number
+          before_description?: string | null
+          after_description?: string | null
           created_at?: string
           updated_at?: string
+          verified_at?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "proofs_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: 'proofs_user_id_fkey'
+            columns: ['user_id']
             isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'profiles'
+            referencedColumns: ['id']
+          },
         ]
       }
       share_events: {
         Row: {
           id: string
           proof_id: string
-          user_id: string
+          user_id: string | null
           share_type: string
+          ip_address: string | null
           created_at: string
         }
         Insert: {
           id?: string
           proof_id: string
-          user_id: string
+          user_id?: string | null
           share_type: string
+          ip_address?: string | null
           created_at?: string
         }
         Update: {
           id?: string
           proof_id?: string
-          user_id?: string
+          user_id?: string | null
           share_type?: string
+          ip_address?: string | null
           created_at?: string
         }
         Relationships: [
           {
-            foreignKeyName: "share_events_proof_id_fkey"
-            columns: ["proof_id"]
+            foreignKeyName: 'share_events_proof_id_fkey'
+            columns: ['proof_id']
             isOneToOne: false
-            referencedRelation: "proofs"
-            referencedColumns: ["id"]
+            referencedRelation: 'proofs'
+            referencedColumns: ['id']
           },
-          {
-            foreignKeyName: "share_events_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
-      flags: {
-        Row: {
-          id: string
-          proof_id: string
-          user_id: string
-          reason: string
-          resolved: boolean
-          created_at: string
-        }
-        Insert: {
-          id?: string
-          proof_id: string
-          user_id: string
-          reason: string
-          resolved?: boolean
-          created_at?: string
-        }
-        Update: {
-          id?: string
-          proof_id?: string
-          user_id?: string
-          reason?: string
-          resolved?: boolean
-          created_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "flags_proof_id_fkey"
-            columns: ["proof_id"]
-            isOneToOne: false
-            referencedRelation: "proofs"
-            referencedColumns: ["id"]
-          }
         ]
       }
       moderation_flags: {
         Row: {
           id: string
           proof_id: string
-          flagged_by: string
+          flagged_by: string | null
+          reporter_id: string | null
+          user_id: string | null
           reason: string
           status: string
-          resolved_by: string | null
-          resolved_at: string | null
           created_at: string
-          updated_at: string
+          resolved_at: string | null
+          moderator_notes: string | null
+          resolved_by: string | null
+          updated_at: string | null
         }
         Insert: {
           id?: string
           proof_id: string
-          flagged_by: string
+          flagged_by?: string | null
+          reporter_id?: string | null
+          user_id?: string | null
           reason: string
           status?: string
-          resolved_by?: string | null
-          resolved_at?: string | null
           created_at?: string
-          updated_at?: string
+          resolved_at?: string | null
+          moderator_notes?: string | null
+          resolved_by?: string | null
+          updated_at?: string | null
         }
         Update: {
           id?: string
           proof_id?: string
-          flagged_by?: string
+          flagged_by?: string | null
+          reporter_id?: string | null
+          user_id?: string | null
           reason?: string
           status?: string
-          resolved_by?: string | null
-          resolved_at?: string | null
           created_at?: string
-          updated_at?: string
+          resolved_at?: string | null
+          moderator_notes?: string | null
+          resolved_by?: string | null
+          updated_at?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "moderation_flags_proof_id_fkey"
-            columns: ["proof_id"]
+            foreignKeyName: 'moderation_flags_proof_id_fkey'
+            columns: ['proof_id']
             isOneToOne: false
-            referencedRelation: "proofs"
-            referencedColumns: ["id"]
+            referencedRelation: 'proofs'
+            referencedColumns: ['id']
           },
-          {
-            foreignKeyName: "moderation_flags_flagged_by_fkey"
-            columns: ["flagged_by"]
-            isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
         ]
       }
     }

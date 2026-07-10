@@ -1,6 +1,9 @@
 import { execSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'
+import dotenv from 'dotenv'
+
+dotenv.config({ path: path.join(process.cwd(), '.env.local') })
 
 const projectId = process.env.NEXT_PUBLIC_SUPABASE_PROJECT_ID
 
@@ -16,19 +19,22 @@ try {
     `npx supabase gen types typescript --project-id ${projectId}`,
     { encoding: 'utf-8' }
   )
-  
+
   const typesDir = path.join(process.cwd(), 'types')
   if (!fs.existsSync(typesDir)) {
     fs.mkdirSync(typesDir, { recursive: true })
   }
-  
+
   const outputPath = path.join(typesDir, 'supabase.ts')
   fs.writeFileSync(outputPath, output)
-  
+
   console.log('✅ Database types generated successfully!')
   console.log(`📁 File created: ${outputPath}`)
-} catch (error: any) {
-  console.error('❌ Failed to generate types:', error.message)
-  console.error('⚠️  Using local type definitions. Run with network access to fetch live schema.')
+} catch (error) {
+  const message = error instanceof Error ? error.message : String(error)
+  console.error('❌ Failed to generate types:', message)
+  console.error(
+    '⚠️  Using local type definitions. Run with network access to fetch live schema.'
+  )
   process.exit(0)
 }
