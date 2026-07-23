@@ -18,16 +18,16 @@ export function Navbar() {
   const { data: session } = useSession()
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <span className="text-xl font-bold">Verix</span>
+          <span className="text-xl font-bold text-primary">Verix</span>
         </Link>
 
         <nav className="hidden items-center space-x-6 md:flex">
           <Link
             href="/leaderboard"
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
           >
             Leaderboard
           </Link>
@@ -35,13 +35,13 @@ export function Navbar() {
             <>
               <Link
                 href="/dashboard"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
               >
                 Dashboard
               </Link>
               <Link
                 href="/submit"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
               >
                 Submit Proof
               </Link>
@@ -55,7 +55,10 @@ export function Navbar() {
           {session ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                <Button
+                  variant="ghost"
+                  className="relative h-8 w-8 rounded-full"
+                >
                   <Avatar className="h-8 w-8">
                     <AvatarImage
                       src={session.user?.image || ''}

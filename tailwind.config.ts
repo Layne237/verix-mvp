@@ -57,11 +57,22 @@ const config: Config = {
           partial: '#F1C40F',
           none: '#E74C3C',
         },
+        gold: '#FFD700',
+        'on-gold': '#B8860B',
       },
       borderRadius: {
+        xl: '1.5rem',
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      fontFamily: {
+        sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        card: '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',
+        dropdown:
+          '0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)',
       },
       keyframes: {
         'accordion-down': {

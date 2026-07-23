@@ -6,13 +6,32 @@ interface ProofStatusIndicatorProps {
 }
 
 const statusConfig = {
-  pending: { label: 'Pending Review', color: 'bg-yellow-500', textColor: 'text-yellow-500' },
-  verified: { label: 'Verified', color: 'bg-green-500', textColor: 'text-green-500' },
-  flagged: { label: 'Flagged', color: 'bg-red-500', textColor: 'text-red-500' },
-  rejected: { label: 'Rejected', color: 'bg-gray-500', textColor: 'text-gray-500' },
+  pending: {
+    label: 'Pending Review',
+    color: 'bg-verified-partial',
+    textColor: 'text-verified-partial',
+  },
+  verified: {
+    label: 'Verified',
+    color: 'bg-verified-standard',
+    textColor: 'text-verified-standard',
+  },
+  flagged: {
+    label: 'Flagged',
+    color: 'bg-verified-none',
+    textColor: 'text-verified-none',
+  },
+  rejected: {
+    label: 'Rejected',
+    color: 'bg-muted-foreground',
+    textColor: 'text-muted-foreground',
+  },
 }
 
-export function ProofStatusIndicator({ status, score }: ProofStatusIndicatorProps) {
+export function ProofStatusIndicator({
+  status,
+  score,
+}: ProofStatusIndicatorProps) {
   const config = statusConfig[status]
 
   return (
