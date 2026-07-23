@@ -1,24 +1,31 @@
-import { createServerClient } from '@/lib/supabase/server'
+import { getLeaderboard, type LeaderboardRankEntry } from '@/lib/leaderboard'
 import { LeaderboardTable } from '@/components/dashboard/LeaderboardTable'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-export default async function LeaderboardPage() {
-  const supabase = createServerClient()
-  const { data: profiles } = await supabase
-    .from('profiles')
-    .select('*')
-    .limit(50)
-
-  const entries = (profiles || []).map((profile, index) => ({
-    rank: index + 1,
+function mapEntries(ranked: LeaderboardRankEntry[]) {
+  return ranked.map((entry) => ({
+    rank: entry.rank,
     user: {
-      name: profile.display_name,
-      avatar_url: profile.avatar_url,
+      name: entry.name,
+      avatar_url: entry.avatar,
     },
-    totalProofs: 0,
-    verifiedProofs: 0,
-    averageScore: 0,
+    totalProofs: entry.total,
+    verifiedProofs: entry.total,
+    averageScore: entry.averageScore,
   }))
+}
+
+export default async function LeaderboardPage() {
+  let entries: ReturnType<typeof mapEntries> = []
+  let loadError = false
+
+  try {
+    const ranked = await getLeaderboard(50)
+    entries = mapEntries(ranked)
+  } catch (error) {
+    console.error('Leaderboard fetch error:', error)
+    loadError = true
+  }
 
   return (
     <div className="container py-8">
@@ -35,7 +42,18 @@ export default async function LeaderboardPage() {
             <CardTitle>Top Contributors</CardTitle>
           </CardHeader>
           <CardContent>
-            <LeaderboardTable entries={entries} />
+            {loadError ? (
+              <p className="py-8 text-center text-muted-foreground">
+                Couldn&apos;t load the leaderboard right now. Please try again
+                shortly.
+              </p>
+            ) : entries.length > 0 ? (
+              <LeaderboardTable entries={entries} />
+            ) : (
+              <p className="py-8 text-center text-muted-foreground">
+                No verified proofs yet. Be the first to make the leaderboard!
+              </p>
+            )}
           </CardContent>
         </Card>
       </div>

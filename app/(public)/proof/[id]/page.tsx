@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import { createServerClient } from '@/lib/supabase/server'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ProofVerificationBadge } from '@/components/proof/ProofVerificationBadge'
@@ -36,9 +35,12 @@ export default async function ProofPage({ params }: ProofPageProps) {
     .from('proofs')
     .select('*')
     .eq('id', params.id)
+    .eq('is_deleted', false)
     .single()
 
   if (!proof) notFound()
+
+  const reasoning = proof.ai_reasoning || proof.verification_reasoning
 
   return (
     <div className="container py-8">
@@ -54,18 +56,19 @@ export default async function ProofPage({ params }: ProofPageProps) {
           <ProofVerificationBadge score={proof.verification_score} />
         </div>
 
+        {/* before/after_image_url are base64 data URIs (see lib/utils/image.ts),
+            not remote/relative paths, so next/image's optimizer can't handle them. */}
         <div className="grid grid-cols-2 gap-4">
           <Card>
             <CardHeader>
               <CardTitle className="text-sm">Before</CardTitle>
             </CardHeader>
             <CardContent className="p-0">
-              <div className="relative aspect-video">
-                <Image
+              <div className="aspect-video">
+                <img
                   src={proof.before_image_url}
                   alt="Before"
-                  fill
-                  className="rounded-b-lg object-cover"
+                  className="h-full w-full rounded-b-lg object-cover"
                 />
               </div>
             </CardContent>
@@ -75,12 +78,11 @@ export default async function ProofPage({ params }: ProofPageProps) {
               <CardTitle className="text-sm">After</CardTitle>
             </CardHeader>
             <CardContent className="p-0">
-              <div className="relative aspect-video">
-                <Image
+              <div className="aspect-video">
+                <img
                   src={proof.after_image_url}
                   alt="After"
-                  fill
-                  className="rounded-b-lg object-cover"
+                  className="h-full w-full rounded-b-lg object-cover"
                 />
               </div>
             </CardContent>
@@ -98,15 +100,15 @@ export default async function ProofPage({ params }: ProofPageProps) {
           </Card>
         )}
 
-        {proof.verification_data && (
+        {reasoning && (
           <Card>
             <CardHeader>
-              <CardTitle>Verification Details</CardTitle>
+              <CardTitle>AI Verification Reasoning</CardTitle>
             </CardHeader>
             <CardContent>
-              <pre className="rounded-md bg-muted p-4 text-sm">
-                {JSON.stringify(proof.verification_data, null, 2)}
-              </pre>
+              <p className="whitespace-pre-wrap text-muted-foreground">
+                {reasoning}
+              </p>
             </CardContent>
           </Card>
         )}

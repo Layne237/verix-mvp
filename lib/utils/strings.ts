@@ -16,9 +16,7 @@ export function truncate(str: string, length: number): string {
   return str.slice(0, length).trimEnd() + '...'
 }
 
-export function formatCategory(category: string): string {
-  return category
-    .split('_')
-    .map(capitalize)
-    .join(' ')
+export function formatCategory(category: string | null): string {
+  if (!category) return 'Other'
+  return category.split('_').map(capitalize).join(' ')
 }
