@@ -13,9 +13,12 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { ThemeToggle } from './ThemeToggle'
+import { isMockAuthEnabled, MOCK_USER } from '@/lib/mock-auth'
 
 export function Navbar() {
-  const { data: session } = useSession()
+  const { data: realSession } = useSession()
+  // Dev-only: preview the logged-in nav state with no real backend behind it.
+  const session = isMockAuthEnabled ? { user: MOCK_USER } : realSession
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

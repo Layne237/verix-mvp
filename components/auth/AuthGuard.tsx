@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { LoadingSpinner } from '@/components/shared/LoadingSpinner'
+import { isMockAuthEnabled } from '@/lib/mock-auth'
 
 interface AuthGuardProps {
   children: React.ReactNode
@@ -15,6 +16,7 @@ export function AuthGuard({ children, requireAdmin = false }: AuthGuardProps) {
   const router = useRouter()
 
   useEffect(() => {
+    if (isMockAuthEnabled) return
     if (status === 'unauthenticated') {
       router.push('/login')
     }
@@ -22,6 +24,11 @@ export function AuthGuard({ children, requireAdmin = false }: AuthGuardProps) {
       router.push('/dashboard')
     }
   }, [status, session, router, requireAdmin])
+
+  // Dev-only: preview auth-gated pages with no real backend behind them.
+  if (isMockAuthEnabled) {
+    return <>{children}</>
+  }
 
   if (status === 'loading') {
     return (
