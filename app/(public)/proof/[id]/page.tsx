@@ -4,7 +4,7 @@ import { createServerClient } from '@/lib/supabase/server'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ProofVerificationBadge } from '@/components/proof/ProofVerificationBadge'
 import { ProofShareButtons } from '@/components/proof/ProofShareButtons'
-import { formatDate } from '@/lib/utils'
+import { formatDate } from '@/lib/utils/date'
 import { formatCategory } from '@/lib/utils/strings'
 import type { Metadata } from 'next'
 
@@ -12,7 +12,9 @@ interface ProofPageProps {
   params: { id: string }
 }
 
-export async function generateMetadata({ params }: ProofPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ProofPageProps): Promise<Metadata> {
   const supabase = createServerClient()
   const { data: proof } = await supabase
     .from('proofs')

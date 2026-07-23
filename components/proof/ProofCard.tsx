@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { ProofVerificationBadge } from './ProofVerificationBadge'
-import { formatRelativeTime } from '@/lib/utils'
+import { formatRelativeTime } from '@/lib/utils/date'
 import { formatCategory } from '@/lib/utils/strings'
 import type { Proof } from '@/types'
 
