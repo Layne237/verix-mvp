@@ -91,6 +91,9 @@ export function Navbar() {
                 <DropdownMenuItem asChild>
                   <Link href="/submit">Submit Proof</Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/settings">Settings</Link>
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className="cursor-pointer"

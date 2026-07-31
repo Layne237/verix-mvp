@@ -25,14 +25,18 @@ export const proofSubmissionSchema = z.object({
     'urban_greening',
     'other',
   ]),
-  beforeImage: z.instanceof(File).refine(
-    (file) => file.size <= 10 * 1024 * 1024,
-    'Image must be less than 10MB'
-  ),
-  afterImage: z.instanceof(File).refine(
-    (file) => file.size <= 10 * 1024 * 1024,
-    'Image must be less than 10MB'
-  ),
+  beforeImage: z
+    .instanceof(File)
+    .refine(
+      (file) => file.size <= 10 * 1024 * 1024,
+      'Image must be less than 10MB'
+    ),
+  afterImage: z
+    .instanceof(File)
+    .refine(
+      (file) => file.size <= 10 * 1024 * 1024,
+      'Image must be less than 10MB'
+    ),
   latitude: z.number().min(-90).max(90).optional(),
   longitude: z.number().min(-180).max(180).optional(),
   locationName: z.string().max(200).optional(),
@@ -43,7 +47,17 @@ export const flagSchema = z.object({
   reason: z.string().min(10, 'Please provide a detailed reason').max(500),
 })
 
+export const profileUpdateSchema = z.object({
+  displayName: z
+    .string()
+    .min(2, 'Name must be at least 2 characters')
+    .max(50)
+    .optional(),
+  showOnLeaderboard: z.boolean().optional(),
+})
+
 export type SignUpInput = z.infer<typeof signUpSchema>
 export type SignInInput = z.infer<typeof signInSchema>
 export type ProofSubmissionInput = z.infer<typeof proofSubmissionSchema>
 export type FlagInput = z.infer<typeof flagSchema>
+export type ProfileUpdateInput = z.infer<typeof profileUpdateSchema>
