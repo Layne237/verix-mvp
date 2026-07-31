@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/layout/Navbar'
-import { Sidebar } from '@/components/layout/Sidebar'
+import { Footer } from '@/components/layout/Footer'
+import { AuthGuard } from '@/components/auth/AuthGuard'
 
 export default function DashboardLayout({
   children,
@@ -7,12 +8,16 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
-      <div className="flex flex-1">
-        <Sidebar />
-        <main className="flex-1 p-6">{children}</main>
+    // Guards every page in this route group (dashboard, submit, ...) in one
+    // place, rather than each page wrapping itself individually.
+    <AuthGuard>
+      <div className="flex min-h-screen flex-col">
+        <Navbar />
+        <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6 lg:px-8">
+          {children}
+        </main>
+        <Footer />
       </div>
-    </div>
+    </AuthGuard>
   )
 }

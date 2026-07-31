@@ -1,6 +1,8 @@
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 
+// Shared shell for public routes (landing sits outside this group and
+// composes Navbar/Footer itself; this covers /leaderboard and /proof/[id]).
 export default function PublicLayout({
   children,
 }: {

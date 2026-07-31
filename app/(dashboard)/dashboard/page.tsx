@@ -1,6 +1,5 @@
 import { auth } from '@/auth'
 import { createServerClient } from '@/lib/supabase/server'
-import { AuthGuard } from '@/components/auth/AuthGuard'
 import { DashboardStats } from '@/components/dashboard/DashboardStats'
 import { ProofList } from '@/components/proof/ProofList'
 
@@ -38,26 +37,24 @@ export default async function DashboardPage() {
   }
 
   return (
-    <AuthGuard>
-      <div className="space-y-8">
-        <div>
-          <h1 className="text-3xl font-bold">Dashboard</h1>
-          <p className="text-muted-foreground">
-            Track your impact and manage your proofs
-          </p>
-        </div>
-
-        <DashboardStats
-          totalProofs={stats.total}
-          verifiedProofs={stats.verified}
-          averageScore={stats.averageScore}
-        />
-
-        <div>
-          <h2 className="mb-4 text-xl font-semibold">Recent Proofs</h2>
-          <ProofList />
-        </div>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold">Dashboard</h1>
+        <p className="text-muted-foreground">
+          Track your impact and manage your proofs
+        </p>
       </div>
-    </AuthGuard>
+
+      <DashboardStats
+        totalProofs={stats.total}
+        verifiedProofs={stats.verified}
+        averageScore={stats.averageScore}
+      />
+
+      <div>
+        <h2 className="mb-4 text-xl font-semibold">Recent Proofs</h2>
+        <ProofList />
+      </div>
+    </div>
   )
 }

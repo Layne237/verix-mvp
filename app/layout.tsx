@@ -5,13 +5,15 @@ import { SessionProvider } from '@/components/session-provider'
 import { ToastProvider } from '@/components/ui/toast'
 import { cn } from '@/lib/utils'
 import { isMockAuthEnabled } from '@/lib/mock-auth'
+import { defaultMetadata } from '@/config/seo'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 
+// defaultMetadata already covers title/description/keywords/Open Graph/
+// Twitter card/robots - just layer the favicon on top here.
 export const metadata: Metadata = {
-  title: 'Verix - AI-Powered Impact Verification',
-  description: 'Verify your impact. Share your proof.',
+  ...defaultMetadata,
   icons: {
     icon: '/favicon.ico',
   },

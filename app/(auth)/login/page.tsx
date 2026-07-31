@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import Link from 'next/link'
 import {
   Card,
@@ -13,12 +14,15 @@ export default function LoginPage() {
     <Card>
       <CardHeader className="text-center">
         <CardTitle className="text-2xl">Welcome back</CardTitle>
-        <CardDescription>
-          Sign in to your Verix account
-        </CardDescription>
+        <CardDescription>Sign in to your Verix account</CardDescription>
       </CardHeader>
       <CardContent>
-        <SignInForm />
+        {/* SignInForm reads ?callbackUrl= via useSearchParams, which requires
+            a Suspense boundary to avoid opting the whole page out of static
+            rendering. */}
+        <Suspense fallback={null}>
+          <SignInForm />
+        </Suspense>
         <div className="mt-4 text-center text-sm">
           Don&apos;t have an account?{' '}
           <Link

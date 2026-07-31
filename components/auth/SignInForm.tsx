@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -12,6 +12,10 @@ import { Label } from '@/components/ui/label'
 
 export function SignInForm() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  // Set by AuthGuard when it redirects an unauthenticated visitor here, so
+  // sign-in can send them back to the page they were actually trying to reach.
+  const callbackUrl = searchParams.get('callbackUrl') || '/dashboard'
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -39,7 +43,7 @@ export function SignInForm() {
         return
       }
 
-      router.push('/dashboard')
+      router.push(callbackUrl)
       router.refresh()
     } catch {
       setError('An unexpected error occurred')
@@ -101,7 +105,7 @@ export function SignInForm() {
         type="button"
         variant="outline"
         className="w-full"
-        onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
+        onClick={() => signIn('google', { callbackUrl })}
       >
         <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
           <path
