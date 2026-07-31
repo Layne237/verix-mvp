@@ -2,7 +2,7 @@
 
 import { useProofs } from '@/hooks/useProofs'
 import { ProofCard } from './ProofCard'
-import { LoadingSpinner } from '@/components/shared/LoadingSpinner'
+import { ProofCardSkeleton } from '@/components/ui/Skeleton'
 import { EmptyState } from '@/components/shared/EmptyState'
 
 export function ProofList() {
@@ -10,8 +10,10 @@ export function ProofList() {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-[400px] items-center justify-center">
-        <LoadingSpinner />
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <ProofCardSkeleton key={i} />
+        ))}
       </div>
     )
   }
