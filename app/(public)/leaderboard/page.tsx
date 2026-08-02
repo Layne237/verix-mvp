@@ -2,6 +2,10 @@ import { getLeaderboard, type LeaderboardRankEntry } from '@/lib/leaderboard'
 import { LeaderboardTable } from '@/components/dashboard/LeaderboardTable'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
+// Public, non-personalized ranking data - safe to cache and reuse across
+// visitors for a minute rather than re-querying Supabase on every request.
+export const revalidate = 60
+
 function mapEntries(ranked: LeaderboardRankEntry[]) {
   return ranked.map((entry) => ({
     rank: entry.rank,

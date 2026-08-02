@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
+import { UserAvatar } from '@/components/ui/avatar'
 import {
   Card,
   CardContent,
@@ -187,6 +188,16 @@ export default function SettingsPage() {
           <CardDescription>How your name appears across Verix</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
+          <div className="flex items-center gap-4">
+            <UserAvatar
+              name={profile?.display_name || profile?.name}
+              image={profile?.avatar_url}
+              size="lg"
+            />
+            <p className="text-sm text-muted-foreground">
+              {profile?.display_name || profile?.name || 'Anonymous'}
+            </p>
+          </div>
           <div className="space-y-2">
             <Label htmlFor="displayName">Display Name</Label>
             <Input

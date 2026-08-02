@@ -1,12 +1,21 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { useProofs } from '@/hooks/useProofs'
 import { ProofCard } from './ProofCard'
 import { ProofCardSkeleton } from '@/components/ui/Skeleton'
 import { EmptyState } from '@/components/shared/EmptyState'
 
 export function ProofList() {
-  const { proofs, isLoading, error } = useProofs()
+  const router = useRouter()
+  const { proofs, isLoading, error, refetch } = useProofs()
+
+  function handleDeleted() {
+    refetch()
+    // DashboardStats is server-rendered from the same data, so refresh the
+    // route too or the stats cards would keep showing the deleted proof.
+    router.refresh()
+  }
 
   if (isLoading) {
     return (
@@ -34,7 +43,7 @@ export function ProofList() {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {proofs.map((proof) => (
-        <ProofCard key={proof.id} proof={proof} />
+        <ProofCard key={proof.id} proof={proof} onDeleted={handleDeleted} />
       ))}
     </div>
   )

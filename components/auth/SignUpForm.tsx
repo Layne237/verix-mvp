@@ -8,9 +8,11 @@ import { signUpSchema, type SignUpInput } from '@/lib/validation/schemas'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useToast } from '@/hooks/useToast'
 
 export function SignUpForm() {
   const router = useRouter()
+  const toast = useToast()
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -35,13 +37,17 @@ export function SignUpForm() {
 
       if (!response.ok) {
         const result = await response.json()
-        setError(result.error || 'Registration failed')
+        const message = result.error || 'Registration failed'
+        setError(message)
+        toast.error(message)
         return
       }
 
+      toast.success('Account created! Please sign in.')
       router.push('/login?registered=true')
     } catch {
       setError('An unexpected error occurred')
+      toast.error('An unexpected error occurred')
     } finally {
       setIsLoading(false)
     }
@@ -51,11 +57,7 @@ export function SignUpForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="name">Full Name</Label>
-        <Input
-          id="name"
-          placeholder="Jane Doe"
-          {...register('name')}
-        />
+        <Input id="name" placeholder="Jane Doe" {...register('name')} />
         {errors.name && (
           <p className="text-sm text-destructive">{errors.name.message}</p>
         )}

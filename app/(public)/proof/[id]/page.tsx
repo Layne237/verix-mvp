@@ -68,6 +68,7 @@ export default async function ProofPage({ params }: ProofPageProps) {
                 <img
                   src={proof.before_image_url}
                   alt="Before"
+                  loading="lazy"
                   className="h-full w-full rounded-b-lg object-cover"
                 />
               </div>
@@ -82,6 +83,7 @@ export default async function ProofPage({ params }: ProofPageProps) {
                 <img
                   src={proof.after_image_url}
                   alt="After"
+                  loading="lazy"
                   className="h-full w-full rounded-b-lg object-cover"
                 />
               </div>

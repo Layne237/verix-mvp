@@ -4,11 +4,20 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { proofSubmissionSchema, type ProofSubmissionInput } from '@/lib/validation/schemas'
+import {
+  proofSubmissionSchema,
+  type ProofSubmissionInput,
+} from '@/lib/validation/schemas'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import {
   Select,
   SelectContent,
@@ -17,9 +26,11 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { IMPACT_CATEGORIES } from '@/lib/utils/constants'
+import { useToast } from '@/hooks/useToast'
 
 export function ProofSubmissionForm() {
   const router = useRouter()
+  const toast = useToast()
   const [isLoading, setIsLoading] = useState(false)
   const [beforePreview, setBeforePreview] = useState<string | null>(null)
   const [afterPreview, setAfterPreview] = useState<string | null>(null)
@@ -60,12 +71,16 @@ export function ProofSubmissionForm() {
         body: formData,
       })
 
-      if (!response.ok) throw new Error('Submission failed')
+      if (!response.ok) {
+        const body = await response.json().catch(() => null)
+        throw new Error(body?.error || 'Submission failed')
+      }
 
+      toast.success('Proof submitted for verification')
       router.push('/dashboard')
       router.refresh()
     } catch (error) {
-      console.error('Submission error:', error)
+      toast.error(error instanceof Error ? error.message : 'Submission failed')
     } finally {
       setIsLoading(false)
     }
@@ -95,7 +110,14 @@ export function ProofSubmissionForm() {
 
           <div className="space-y-2">
             <Label htmlFor="action_type">Action Type</Label>
-            <Select onValueChange={(value) => setValue('action_type', value as any)}>
+            <Select
+              onValueChange={(value) =>
+                setValue(
+                  'action_type',
+                  value as ProofSubmissionInput['action_type']
+                )
+              }
+            >
               <SelectTrigger>
                 <SelectValue placeholder="Select an action type" />
               </SelectTrigger>

@@ -9,9 +9,11 @@ import { signInSchema, type SignInInput } from '@/lib/validation/schemas'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useToast } from '@/hooks/useToast'
 
 export function SignInForm() {
   const router = useRouter()
+  const toast = useToast()
   const searchParams = useSearchParams()
   // Set by AuthGuard when it redirects an unauthenticated visitor here, so
   // sign-in can send them back to the page they were actually trying to reach.
@@ -40,6 +42,7 @@ export function SignInForm() {
 
       if (result?.error) {
         setError('Invalid email or password')
+        toast.error('Invalid email or password')
         return
       }
 
@@ -47,6 +50,7 @@ export function SignInForm() {
       router.refresh()
     } catch {
       setError('An unexpected error occurred')
+      toast.error('An unexpected error occurred')
     } finally {
       setIsLoading(false)
     }

@@ -2,6 +2,7 @@ import { auth } from '@/auth'
 import { createServerClient } from '@/lib/supabase/server'
 import { DashboardStats } from '@/components/dashboard/DashboardStats'
 import { ProofList } from '@/components/proof/ProofList'
+import { UserAvatar } from '@/components/ui/avatar'
 
 async function getStats(userId: string) {
   const supabase = createServerClient()
@@ -38,11 +39,22 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <p className="text-muted-foreground">
-          Track your impact and manage your proofs
-        </p>
+      <div className="flex items-center gap-4">
+        <UserAvatar
+          name={session?.user?.name}
+          image={session?.user?.image}
+          size="lg"
+        />
+        <div>
+          <h1 className="text-3xl font-bold">
+            {session?.user?.name
+              ? `Welcome back, ${session.user.name}`
+              : 'Dashboard'}
+          </h1>
+          <p className="text-muted-foreground">
+            Track your impact and manage your proofs
+          </p>
+        </div>
       </div>
 
       <DashboardStats
