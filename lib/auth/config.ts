@@ -1,20 +1,16 @@
 import type { NextAuthConfig } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import Google from 'next-auth/providers/google'
-import { createClient } from '@supabase/supabase-js'
-import type { Database } from '@/types/supabase'
 import { signInSchema } from '@/lib/validation/schemas'
 import { supabaseAdmin } from '@/lib/supabase/admin'
+import { createPublicClient } from '@/lib/supabase/public'
 
 /**
  * Credentials auth delegates password verification to Supabase Auth itself
  * (via the anon client's signInWithPassword) rather than storing/hashing
  * passwords again in NextAuth - Supabase already owns the user/password store.
  */
-const supabaseAnon = createClient<Database>(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
+const supabaseAnon = createPublicClient()
 
 export const authConfig: NextAuthConfig = {
   providers: [
@@ -99,4 +95,10 @@ export const authConfig: NextAuthConfig = {
   pages: {
     signIn: '/login',
   },
+  // Auth.js only auto-trusts the request Host header when AUTH_URL/VERCEL/
+  // CF_PAGES is set or NODE_ENV isn't "production" - this project uses the
+  // legacy NEXTAUTH_URL name, which doesn't satisfy that check, so
+  // production runs (npm run start, and possibly non-Vercel hosts) would
+  // otherwise reject every request with an UntrustedHost error.
+  trustHost: true,
 }

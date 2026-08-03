@@ -16,6 +16,9 @@ const { auth } = NextAuth({
   providers: [],
   session: { strategy: 'jwt' },
   secret: process.env.NEXTAUTH_SECRET,
+  // See the matching comment in lib/auth/config.ts - this project's
+  // NEXTAUTH_URL naming doesn't satisfy Auth.js's auto-trust detection.
+  trustHost: true,
 })
 
 const PROTECTED_PREFIXES = ['/dashboard', '/submit', '/settings']

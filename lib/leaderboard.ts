@@ -1,4 +1,4 @@
-import { createServerClient } from '@/lib/supabase/server'
+import { createPublicClient } from '@/lib/supabase/public'
 
 export interface LeaderboardRankEntry {
   rank: number
@@ -18,7 +18,7 @@ export interface LeaderboardRankEntry {
 export async function getLeaderboard(
   limit = 50
 ): Promise<LeaderboardRankEntry[]> {
-  const supabase = createServerClient()
+  const supabase = createPublicClient()
   const { data: proofs, error } = await supabase
     .from('proofs')
     .select('user_id, profiles(display_name, avatar_url), verification_score')
